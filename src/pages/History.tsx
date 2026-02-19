@@ -1,49 +1,36 @@
 import { motion } from 'framer-motion';
 import { Target, Eye, Heart, Zap, Shield, Building } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const History = () => {
+    const { t } = useLanguage();
+
     const values = [
         {
             icon: Heart,
-            title: "Engagement",
-            description: "Un dévouement total envers nos clients et la communauté guinéenne.",
+            title: t.history.values.engagement.title,
+            description: t.history.values.engagement.description,
             color: "--color-brand-red"
         },
         {
             icon: Target,
-            title: "Excellence",
-            description: "La recherche constante de la qualité dans chaque projet réalisé.",
+            title: t.history.values.excellence.title,
+            description: t.history.values.excellence.description,
             color: "--color-brand-gold"
         },
         {
             icon: Zap,
-            title: "Innovation",
-            description: "L'adoption des technologies les plus avancées pour des solutions durables.",
+            title: t.history.values.innovation.title,
+            description: t.history.values.innovation.description,
             color: "--color-brand-green"
         }
     ];
 
     const milestones = [
-        {
-            year: "Fondation",
-            title: "Création de l'entreprise",
-            description: "HADJA AISHA EMPOWERMENT voit le jour à Conakry avec une vision claire : contribuer au développement de la Guinée."
-        },
-        {
-            year: "Expansion",
-            title: "Diversification des services",
-            description: "Extension de nos activités vers la sécurité électronique et les énergies renouvelables."
-        },
-        {
-            year: "Reconnaissance",
-            title: "Partenariats stratégiques",
-            description: "Collaboration avec des institutions majeures : gouvernement, banques et grandes entreprises."
-        },
-        {
-            year: "Aujourd'hui",
-            title: "Leader du marché",
-            description: "Position de référence en Guinée pour les solutions intégrées en énergie, sécurité et construction."
-        }
+        t.history.milestones.foundation,
+        t.history.milestones.expansion,
+        t.history.milestones.recognition,
+        t.history.milestones.today
     ];
 
     return (
@@ -58,15 +45,16 @@ const History = () => {
                     <div className="max-w-4xl mb-20">
                         <div className="flex items-center gap-2 mb-4">
                             <div className="h-0.5 w-8 bg-gradient-to-r from-[--color-brand-red] to-[--color-brand-gold]"></div>
-                            <span className="text-sm font-bold text-[--color-brand-gold] tracking-widest uppercase">Notre Histoire</span>
+                            <span className="text-sm font-bold text-[--color-brand-gold] tracking-widest uppercase">
+                                {t.history.badge}
+                            </span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold mb-8 text-white">
-                            Bâtir l'avenir de la <span className="text-[--color-brand-gold]">Guinée</span>
+                            {t.history.title} <span className="text-[--color-brand-gold]">{t.history.titleHighlight}</span>
                         </h1>
                         <p className="text-xl text-[--color-text-secondary] leading-relaxed">
-                            Depuis sa création, HADJA AISHA EMPOWERMENT s'engage pour le développement durable de la Guinée.
-                            Sous la direction de <strong className="text-white">Mamady Kalifa KEITA</strong>, nous construisons
-                            un avenir où technologie et tradition se rencontrent pour créer des solutions innovantes.
+                            {t.history.intro} <strong className="text-white">{t.history.leader}</strong>
+                            {t.history.introEnd}
                         </p>
                     </div>
 
@@ -83,11 +71,9 @@ const History = () => {
                                 <div className="w-12 h-12 rounded-xl bg-[--color-brand-gold]/20 flex items-center justify-center mb-6">
                                     <Target className="text-[--color-brand-gold]" size={24} />
                                 </div>
-                                <h2 className="text-2xl font-bold text-white mb-4">Notre Mission</h2>
+                                <h2 className="text-2xl font-bold text-white mb-4">{t.history.mission.title}</h2>
                                 <p className="text-[--color-text-secondary] leading-relaxed">
-                                    Fournir des solutions technologiques de pointe en énergie solaire, sécurité électronique
-                                    et construction, adaptées aux réalités guinéennes, tout en garantissant qualité,
-                                    fiabilité et accompagnement personnalisé à chaque client.
+                                    {t.history.mission.description}
                                 </p>
                             </div>
                         </motion.div>
@@ -103,11 +89,9 @@ const History = () => {
                                 <div className="w-12 h-12 rounded-xl bg-[--color-brand-green]/20 flex items-center justify-center mb-6">
                                     <Eye className="text-[--color-brand-green]" size={24} />
                                 </div>
-                                <h2 className="text-2xl font-bold text-white mb-4">Notre Vision</h2>
+                                <h2 className="text-2xl font-bold text-white mb-4">{t.history.vision.title}</h2>
                                 <p className="text-[--color-text-secondary] leading-relaxed">
-                                    Devenir le partenaire de référence en Afrique de l'Ouest pour les solutions intégrées
-                                    d'infrastructure moderne, en contribuant activement à l'autonomie énergétique et
-                                    à la sécurité des entreprises et des foyers guinéens.
+                                    {t.history.vision.description}
                                 </p>
                             </div>
                         </motion.div>
@@ -115,7 +99,7 @@ const History = () => {
 
                     {/* Values */}
                     <div className="mb-20">
-                        <h2 className="text-3xl font-bold text-white mb-10 text-center">Nos Valeurs</h2>
+                        <h2 className="text-3xl font-bold text-white mb-10 text-center">{t.history.valuesTitle}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {values.map((value, index) => (
                                 <motion.div
@@ -141,7 +125,7 @@ const History = () => {
 
                     {/* Timeline */}
                     <div className="mb-20">
-                        <h2 className="text-3xl font-bold text-white mb-10 text-center">Notre Parcours</h2>
+                        <h2 className="text-3xl font-bold text-white mb-10 text-center">{t.history.journeyTitle}</h2>
                         <div className="relative">
                             {/* Timeline line */}
                             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[--color-brand-red] via-[--color-brand-gold] to-[--color-brand-green]"></div>
@@ -171,15 +155,15 @@ const History = () => {
 
                     {/* Services Summary */}
                     <div className="bg-gradient-to-r from-[--color-dark-card] to-[--color-dark-surface] p-8 md:p-12 rounded-3xl border border-white/5">
-                        <h2 className="text-3xl font-bold text-white mb-8 text-center">Nos Domaines d'Expertise</h2>
+                        <h2 className="text-3xl font-bold text-white mb-8 text-center">{t.history.expertiseTitle}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="flex items-start gap-4">
                                 <div className="w-12 h-12 rounded-xl bg-[--color-brand-gold]/20 flex items-center justify-center flex-shrink-0">
                                     <Zap className="text-[--color-brand-gold]" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-2">Énergie Solaire</h3>
-                                    <p className="text-[--color-text-secondary] text-sm">Installation de systèmes photovoltaïques pour l'autonomie énergétique.</p>
+                                    <h3 className="text-lg font-bold text-white mb-2">{t.history.expertise.solar.title}</h3>
+                                    <p className="text-[--color-text-secondary] text-sm">{t.history.expertise.solar.description}</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4">
@@ -187,8 +171,8 @@ const History = () => {
                                     <Shield className="text-[--color-brand-red]" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-2">Sécurité Électronique</h3>
-                                    <p className="text-[--color-text-secondary] text-sm">Vidéosurveillance, contrôle d'accès et systèmes d'alarme.</p>
+                                    <h3 className="text-lg font-bold text-white mb-2">{t.history.expertise.security.title}</h3>
+                                    <p className="text-[--color-text-secondary] text-sm">{t.history.expertise.security.description}</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4">
@@ -196,8 +180,8 @@ const History = () => {
                                     <Building className="text-[--color-brand-green]" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white mb-2">Construction & BTP</h3>
-                                    <p className="text-[--color-text-secondary] text-sm">Réalisation de projets résidentiels et commerciaux.</p>
+                                    <h3 className="text-lg font-bold text-white mb-2">{t.history.expertise.construction.title}</h3>
+                                    <p className="text-[--color-text-secondary] text-sm">{t.history.expertise.construction.description}</p>
                                 </div>
                             </div>
                         </div>

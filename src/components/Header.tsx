@@ -16,7 +16,7 @@ const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -24,6 +24,18 @@ const Header = () => {
     useEffect(() => {
         setIsMobileMenuOpen(false);
     }, [location]);
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
 
     // Close lang menu when clicking outside
     useEffect(() => {
@@ -35,14 +47,24 @@ const Header = () => {
     }, [isLangMenuOpen]);
 
     const navLinks = [
-        { name: t.nav.services, to: 'services', type: 'scroll' },
-        { name: t.nav.realizations, to: '/realisations', type: 'router' },
-        { name: t.nav.history, to: '/histoire', type: 'router' },
-        { name: t.nav.contact, to: 'contact', type: 'scroll' },
+        { name: t.nav.services, to: 'services', type: 'scroll', path: '/#services' },
+        { name: t.nav.realizations, to: '/realisations', type: 'router', path: '/realisations' },
+        { name: t.nav.history, to: '/histoire', type: 'router', path: '/histoire' },
+        { name: t.nav.contact, to: 'contact', type: 'scroll', path: '/#contact' },
     ];
 
+    const isActiveLink = (link: typeof navLinks[0]) => {
+        if (link.type === 'router') {
+            return location.pathname === link.to;
+        }
+        return false;
+    };
+
     const NavLink = ({ link }: { link: typeof navLinks[0] }) => {
-        const baseClass = "text-sm font-medium text-white/70 hover:text-white transition-colors duration-300";
+        const isActive = isActiveLink(link);
+        const baseClass = `text-sm font-medium transition-colors duration-300 ${
+            isActive ? 'text-[--color-brand-gold]' : 'text-white/70 hover:text-white'
+        }`;
 
         if (link.type === 'scroll' && isHome) {
             return (
@@ -75,17 +97,17 @@ const Header = () => {
     return (
         <>
             <header
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
                     isScrolled
-                        ? 'bg-[#191F31]/90 backdrop-blur-xl border-b border-white/5'
+                        ? 'bg-[#191F31]/95 backdrop-blur-xl border-b border-white/5'
                         : 'bg-transparent'
                 }`}
             >
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
-                        <RouterLink to="/" className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 md:w-12 md:h-12">
+                        <RouterLink to="/" className="flex items-center gap-2 md:gap-3 group">
+                            <div className="w-9 h-9 md:w-11 md:h-11">
                                 <img
                                     src="/logo.svg"
                                     alt="HADJA AISHA EMPOWERMENT"
@@ -93,21 +115,21 @@ const Header = () => {
                                 />
                             </div>
                             <div className="hidden sm:block">
-                                <span className="font-bold text-lg text-white group-hover:text-[--color-brand-gold] transition-colors duration-300">
-                                    HADJA AISHA
+                                <span className="font-bold text-sm md:text-base lg:text-lg text-white group-hover:text-[--color-brand-gold] transition-colors duration-300 leading-tight">
+                                    HADJA AISHA<br className="hidden lg:inline" /><span className="hidden lg:inline"> </span>EMPOWERMENT
                                 </span>
                             </div>
                         </RouterLink>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center gap-8">
+                        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
                             {navLinks.map((link) => (
                                 <NavLink key={link.name} link={link} />
                             ))}
                         </nav>
 
                         {/* Right side - Language Selector + CTA */}
-                        <div className="hidden md:flex items-center gap-4">
+                        <div className="hidden md:flex items-center gap-3 lg:gap-4">
                             {/* Language Selector */}
                             <div className="relative">
                                 <button
@@ -116,6 +138,7 @@ const Header = () => {
                                         setIsLangMenuOpen(!isLangMenuOpen);
                                     }}
                                     className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-sm text-white/70 hover:text-white"
+                                    aria-label="Changer de langue"
                                 >
                                     <Globe size={16} />
                                     <span>{languageFlags[language]}</span>
@@ -127,6 +150,7 @@ const Header = () => {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: 10 }}
+                                            transition={{ duration: 0.15 }}
                                             className="absolute right-0 mt-2 py-2 w-40 bg-[#1E2538] border border-white/10 rounded-xl shadow-2xl overflow-hidden"
                                         >
                                             {languages.map((lang) => (
@@ -153,15 +177,24 @@ const Header = () => {
                             </div>
 
                             {/* CTA Button */}
-                            <ScrollLink
-                                to="quote"
-                                smooth={true}
-                                duration={600}
-                                offset={-80}
-                                className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-white transition-colors duration-300 cursor-pointer"
-                            >
-                                {t.nav.quote}
-                            </ScrollLink>
+                            {isHome ? (
+                                <ScrollLink
+                                    to="quote"
+                                    smooth={true}
+                                    duration={600}
+                                    offset={-80}
+                                    className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black text-sm font-semibold px-4 lg:px-5 py-2.5 rounded-full hover:bg-white transition-colors duration-300 cursor-pointer"
+                                >
+                                    {t.nav.quote}
+                                </ScrollLink>
+                            ) : (
+                                <RouterLink
+                                    to="/#quote"
+                                    className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black text-sm font-semibold px-4 lg:px-5 py-2.5 rounded-full hover:bg-white transition-colors duration-300"
+                                >
+                                    {t.nav.quote}
+                                </RouterLink>
+                            )}
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -177,7 +210,7 @@ const Header = () => {
                                         initial={{ rotate: -90, opacity: 0 }}
                                         animate={{ rotate: 0, opacity: 1 }}
                                         exit={{ rotate: 90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
+                                        transition={{ duration: 0.15 }}
                                     >
                                         <X size={24} />
                                     </motion.div>
@@ -187,7 +220,7 @@ const Header = () => {
                                         initial={{ rotate: 90, opacity: 0 }}
                                         animate={{ rotate: 0, opacity: 1 }}
                                         exit={{ rotate: -90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
+                                        transition={{ duration: 0.15 }}
                                     >
                                         <Menu size={24} />
                                     </motion.div>
@@ -205,7 +238,7 @@ const Header = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.2 }}
                         className="fixed inset-0 z-40 bg-[#191F31]"
                     >
                         <div className="flex flex-col items-center justify-center min-h-screen px-6 py-20">
@@ -213,72 +246,93 @@ const Header = () => {
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="flex gap-3 mb-10"
+                                transition={{ delay: 0.1 }}
+                                className="flex gap-2 mb-10"
                             >
                                 {languages.map((lang) => (
                                     <button
                                         key={lang}
                                         onClick={() => setLanguage(lang)}
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
+                                        className={`flex items-center gap-2 px-3 py-2 rounded-full border transition-all ${
                                             language === lang
                                                 ? 'bg-[--color-brand-gold]/10 border-[--color-brand-gold] text-[--color-brand-gold]'
                                                 : 'border-white/10 text-white/60 hover:border-white/20'
                                         }`}
                                     >
-                                        <span className="text-lg">{languageFlags[lang]}</span>
-                                        <span className="text-sm">{languageNames[lang]}</span>
+                                        <span className="text-base">{languageFlags[lang]}</span>
+                                        <span className="text-xs">{languageNames[lang]}</span>
                                     </button>
                                 ))}
                             </motion.div>
 
-                            <nav className="flex flex-col items-center gap-6">
-                                {navLinks.map((link, index) => (
-                                    <motion.div
-                                        key={link.name}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        {link.type === 'scroll' && isHome ? (
-                                            <ScrollLink
-                                                to={link.to}
-                                                smooth={true}
-                                                duration={600}
-                                                offset={-80}
-                                                className="text-3xl font-light text-white hover:text-[--color-brand-gold] transition-colors cursor-pointer"
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                            >
-                                                {link.name}
-                                            </ScrollLink>
-                                        ) : (
-                                            <RouterLink
-                                                to={link.type === 'scroll' ? `/#${link.to}` : link.to}
-                                                className="text-3xl font-light text-white hover:text-[--color-brand-gold] transition-colors"
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                            >
-                                                {link.name}
-                                            </RouterLink>
-                                        )}
-                                    </motion.div>
-                                ))}
+                            <nav className="flex flex-col items-center gap-5">
+                                {navLinks.map((link, index) => {
+                                    const isActive = isActiveLink(link);
+                                    return (
+                                        <motion.div
+                                            key={link.name}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.15 + index * 0.05 }}
+                                        >
+                                            {link.type === 'scroll' && isHome ? (
+                                                <ScrollLink
+                                                    to={link.to}
+                                                    smooth={true}
+                                                    duration={600}
+                                                    offset={-80}
+                                                    className={`text-2xl font-light transition-colors cursor-pointer ${
+                                                        isActive ? 'text-[--color-brand-gold]' : 'text-white hover:text-[--color-brand-gold]'
+                                                    }`}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                >
+                                                    {link.name}
+                                                </ScrollLink>
+                                            ) : (
+                                                <RouterLink
+                                                    to={link.type === 'scroll' ? `/#${link.to}` : link.to}
+                                                    className={`text-2xl font-light transition-colors ${
+                                                        isActive ? 'text-[--color-brand-gold]' : 'text-white hover:text-[--color-brand-gold]'
+                                                    }`}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                >
+                                                    {link.name}
+                                                    {isActive && (
+                                                        <span className="ml-2 inline-block w-2 h-2 bg-[--color-brand-gold] rounded-full" />
+                                                    )}
+                                                </RouterLink>
+                                            )}
+                                        </motion.div>
+                                    );
+                                })}
                             </nav>
 
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className="mt-10"
+                                className="mt-8"
                             >
-                                <ScrollLink
-                                    to="quote"
-                                    smooth={true}
-                                    duration={600}
-                                    offset={-80}
-                                    className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black font-semibold px-8 py-3 rounded-full cursor-pointer"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {t.nav.requestQuote}
-                                </ScrollLink>
+                                {isHome ? (
+                                    <ScrollLink
+                                        to="quote"
+                                        smooth={true}
+                                        duration={600}
+                                        offset={-80}
+                                        className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black font-semibold px-8 py-3 rounded-full cursor-pointer active:scale-95 transition-transform"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {t.nav.requestQuote}
+                                    </ScrollLink>
+                                ) : (
+                                    <RouterLink
+                                        to="/#quote"
+                                        className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black font-semibold px-8 py-3 rounded-full active:scale-95 transition-transform"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {t.nav.requestQuote}
+                                    </RouterLink>
+                                )}
                             </motion.div>
 
                             {/* Contact info in mobile menu */}
@@ -286,11 +340,11 @@ const Header = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="mt-12 text-center"
+                                className="mt-10 text-center"
                             >
                                 <a
                                     href="tel:+224613355007"
-                                    className="text-white/60 hover:text-[--color-brand-gold] transition-colors"
+                                    className="text-white/60 hover:text-[--color-brand-gold] transition-colors text-sm"
                                 >
                                     +224 613 35 50 07
                                 </a>

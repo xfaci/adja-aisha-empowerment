@@ -1,10 +1,36 @@
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const Footer = () => {
     const { t } = useLanguage();
+    const location = useLocation();
+    const isHome = location.pathname === '/';
     const currentYear = new Date().getFullYear();
+
+    const NavScrollLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
+        if (isHome) {
+            return (
+                <ScrollLink
+                    to={to}
+                    smooth={true}
+                    duration={600}
+                    offset={-80}
+                    className="text-white/40 hover:text-white text-sm cursor-pointer transition-colors"
+                >
+                    {children}
+                </ScrollLink>
+            );
+        }
+        return (
+            <RouterLink
+                to={`/#${to}`}
+                className="text-white/40 hover:text-white text-sm transition-colors"
+            >
+                {children}
+            </RouterLink>
+        );
+    };
 
     return (
         <footer className="bg-[#141826] border-t border-white/5">
@@ -31,15 +57,9 @@ const Footer = () => {
                         <h4 className="font-semibold text-white mb-4">{t.footer.navigation}</h4>
                         <ul className="space-y-3">
                             <li>
-                                <ScrollLink
-                                    to="services"
-                                    smooth={true}
-                                    duration={600}
-                                    offset={-80}
-                                    className="text-white/40 hover:text-white text-sm cursor-pointer transition-colors"
-                                >
+                                <NavScrollLink to="services">
                                     {t.nav.services}
-                                </ScrollLink>
+                                </NavScrollLink>
                             </li>
                             <li>
                                 <RouterLink
@@ -58,15 +78,9 @@ const Footer = () => {
                                 </RouterLink>
                             </li>
                             <li>
-                                <ScrollLink
-                                    to="contact"
-                                    smooth={true}
-                                    duration={600}
-                                    offset={-80}
-                                    className="text-white/40 hover:text-white text-sm cursor-pointer transition-colors"
-                                >
+                                <NavScrollLink to="contact">
                                     {t.nav.contact}
-                                </ScrollLink>
+                                </NavScrollLink>
                             </li>
                         </ul>
                     </div>

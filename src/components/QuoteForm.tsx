@@ -87,7 +87,7 @@ ${formData.message}
 
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
                             {t.quote.title}{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">
+                            <span className="text-[#FFD100]">
                                 {t.quote.titleHighlight}
                             </span>
                         </h2>

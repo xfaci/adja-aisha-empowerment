@@ -86,6 +86,12 @@ export const translations = {
             stat1: "Projets livrés",
             stat2: "Clients satisfaits",
             stat3: "D'expérience",
+            statYears: "5 ans",
+            items: {
+                security1: { title: "Sécurisation Ministère du Budget", category: "Sécurité" },
+                security2: { title: "Sécurisation Ministère de l'Agriculture", category: "Sécurité" },
+                solar: { title: "Installations Solaires Particuliers", category: "Énergie Solaire" },
+            },
         },
         // Trust
         trust: {
@@ -131,6 +137,104 @@ export const translations = {
             contactTitle: "Contact",
             copyright: "Tous droits réservés.",
         },
+        // WhatsApp
+        whatsapp: {
+            message: "Bonjour HADJA AISHA EMPOWERMENT, je suis intéressé par vos services.",
+            tooltip: "Discuter avec nous",
+        },
+        // History Page
+        history: {
+            badge: "Notre Histoire",
+            title: "Bâtir l'avenir de la",
+            titleHighlight: "Guinée",
+            intro: "Depuis sa création, HADJA AISHA EMPOWERMENT s'engage pour le développement durable de la Guinée. Sous la direction de",
+            leader: "Mamady Kalifa KEITA",
+            introEnd: ", nous construisons un avenir où technologie et tradition se rencontrent pour créer des solutions innovantes.",
+            mission: {
+                title: "Notre Mission",
+                description: "Fournir des solutions technologiques de pointe en énergie solaire, sécurité électronique et construction, adaptées aux réalités guinéennes, tout en garantissant qualité, fiabilité et accompagnement personnalisé à chaque client."
+            },
+            vision: {
+                title: "Notre Vision",
+                description: "Devenir le partenaire de référence en Afrique de l'Ouest pour les solutions intégrées d'infrastructure moderne, en contribuant activement à l'autonomie énergétique et à la sécurité des entreprises et des foyers guinéens."
+            },
+            valuesTitle: "Nos Valeurs",
+            values: {
+                engagement: { title: "Engagement", description: "Un dévouement total envers nos clients et la communauté guinéenne." },
+                excellence: { title: "Excellence", description: "La recherche constante de la qualité dans chaque projet réalisé." },
+                innovation: { title: "Innovation", description: "L'adoption des technologies les plus avancées pour des solutions durables." }
+            },
+            journeyTitle: "Notre Parcours",
+            milestones: {
+                foundation: { year: "Fondation", title: "Création de l'entreprise", description: "HADJA AISHA EMPOWERMENT voit le jour à Conakry avec une vision claire : contribuer au développement de la Guinée." },
+                expansion: { year: "Expansion", title: "Diversification des services", description: "Extension de nos activités vers la sécurité électronique et les énergies renouvelables." },
+                recognition: { year: "Reconnaissance", title: "Partenariats stratégiques", description: "Collaboration avec des institutions majeures : gouvernement, banques et grandes entreprises." },
+                today: { year: "Aujourd'hui", title: "Leader du marché", description: "Position de référence en Guinée pour les solutions intégrées en énergie, sécurité et construction." }
+            },
+            expertiseTitle: "Nos Domaines d'Expertise",
+            expertise: {
+                solar: { title: "Énergie Solaire", description: "Installation de systèmes photovoltaïques pour l'autonomie énergétique." },
+                security: { title: "Sécurité Électronique", description: "Vidéosurveillance, contrôle d'accès et systèmes d'alarme." },
+                construction: { title: "Construction & BTP", description: "Réalisation de projets résidentiels et commerciaux." }
+            }
+        },
+        // Realizations Page
+        realizations: {
+            badge: "Portfolio",
+            title: "Nos Réalisations",
+            subtitle: "Découvrez les projets emblématiques qui témoignent de notre expertise en énergie solaire, sécurité et construction à travers la Guinée.",
+            filters: {
+                all: "Tous",
+                solar: "Énergie Solaire",
+                security: "Sécurité",
+                construction: "Construction"
+            },
+            projects: {
+                security1: {
+                    title: "Ministère du Budget",
+                    category: "Sécurité",
+                    description: "Installation complète d'un système de sécurité pour le Ministère du Budget : vidéosurveillance HD, contrôle d'accès biométrique et portes sécurisées.",
+                    specs: ["Caméras HD", "Biométrie", "Portes sécurisées"]
+                },
+                security2: {
+                    title: "Ministère de l'Agriculture",
+                    category: "Sécurité",
+                    description: "Déploiement d'un système de sécurité intégré pour le Ministère de l'Agriculture : vidéosurveillance, contrôle d'accès et détection d'intrusion.",
+                    specs: ["Vidéosurveillance", "Contrôle d'accès", "Alarme anti-intrusion"]
+                },
+                security3: {
+                    title: "Ministère de l'Enseignement Supérieur",
+                    category: "Sécurité",
+                    description: "Sécurisation complète du Ministère de l'Enseignement Supérieur avec caméras, biométrie et systèmes d'alarme modernes.",
+                    specs: ["Caméras", "Biométrie", "Systèmes d'alarme"]
+                },
+                security4: {
+                    title: "Ministère des Affaires d'État",
+                    category: "Sécurité",
+                    description: "Installation de sécurité haute performance pour le Ministère des Affaires d'État : surveillance 24/7 et contrôle d'accès renforcé.",
+                    specs: ["Surveillance 24/7", "Accès renforcé", "Portes sécurisées"]
+                },
+                solar1: {
+                    title: "Installations Solaires Résidentielles",
+                    category: "Énergie Solaire",
+                    description: "Installation de panneaux solaires chez des particuliers à Conakry. Solutions sur mesure pour l'autonomie énergétique des foyers guinéens.",
+                    specs: ["Panneaux photovoltaïques", "Batteries", "Onduleurs"]
+                }
+            },
+            cta: {
+                title: "Vous avez un projet ?",
+                subtitle: "Rejoignez nos clients satisfaits et confiez-nous votre prochain projet. Nous vous accompagnons de la conception à la réalisation.",
+                button: "Demander un devis gratuit"
+            }
+        },
+        // 404 Page
+        notFound: {
+            title: "Page introuvable",
+            subtitle: "La page que vous recherchez n'existe pas ou a été déplacée.",
+            button: "Retour à l'accueil"
+        },
+        // Scroll to top
+        scrollTop: "Retour en haut"
     },
     en: {
         // Navigation
@@ -217,6 +321,12 @@ export const translations = {
             stat1: "Projects Delivered",
             stat2: "Satisfied Clients",
             stat3: "Years Experience",
+            statYears: "5 years",
+            items: {
+                security1: { title: "Ministry of Budget Security", category: "Security" },
+                security2: { title: "Ministry of Agriculture Security", category: "Security" },
+                solar: { title: "Residential Solar Installations", category: "Solar Energy" },
+            },
         },
         // Trust
         trust: {
@@ -262,6 +372,104 @@ export const translations = {
             contactTitle: "Contact",
             copyright: "All rights reserved.",
         },
+        // WhatsApp
+        whatsapp: {
+            message: "Hello HADJA AISHA EMPOWERMENT, I am interested in your services.",
+            tooltip: "Chat with us",
+        },
+        // History Page
+        history: {
+            badge: "Our History",
+            title: "Building the future of",
+            titleHighlight: "Guinea",
+            intro: "Since its creation, HADJA AISHA EMPOWERMENT has been committed to the sustainable development of Guinea. Under the leadership of",
+            leader: "Mamady Kalifa KEITA",
+            introEnd: ", we are building a future where technology and tradition meet to create innovative solutions.",
+            mission: {
+                title: "Our Mission",
+                description: "To provide cutting-edge technological solutions in solar energy, electronic security and construction, adapted to Guinean realities, while guaranteeing quality, reliability and personalized support for each client."
+            },
+            vision: {
+                title: "Our Vision",
+                description: "To become the reference partner in West Africa for integrated modern infrastructure solutions, actively contributing to energy independence and security for Guinean businesses and households."
+            },
+            valuesTitle: "Our Values",
+            values: {
+                engagement: { title: "Commitment", description: "Total dedication to our clients and the Guinean community." },
+                excellence: { title: "Excellence", description: "The constant pursuit of quality in every project delivered." },
+                innovation: { title: "Innovation", description: "Adoption of the most advanced technologies for sustainable solutions." }
+            },
+            journeyTitle: "Our Journey",
+            milestones: {
+                foundation: { year: "Foundation", title: "Company Creation", description: "HADJA AISHA EMPOWERMENT was born in Conakry with a clear vision: to contribute to Guinea's development." },
+                expansion: { year: "Expansion", title: "Service Diversification", description: "Extension of our activities to electronic security and renewable energy." },
+                recognition: { year: "Recognition", title: "Strategic Partnerships", description: "Collaboration with major institutions: government, banks and large companies." },
+                today: { year: "Today", title: "Market Leader", description: "Reference position in Guinea for integrated solutions in energy, security and construction." }
+            },
+            expertiseTitle: "Our Areas of Expertise",
+            expertise: {
+                solar: { title: "Solar Energy", description: "Installation of photovoltaic systems for energy independence." },
+                security: { title: "Electronic Security", description: "Video surveillance, access control and alarm systems." },
+                construction: { title: "Construction & Building", description: "Residential and commercial project delivery." }
+            }
+        },
+        // Realizations Page
+        realizations: {
+            badge: "Portfolio",
+            title: "Our Projects",
+            subtitle: "Discover the flagship projects that demonstrate our expertise in solar energy, security and construction across Guinea.",
+            filters: {
+                all: "All",
+                solar: "Solar Energy",
+                security: "Security",
+                construction: "Construction"
+            },
+            projects: {
+                security1: {
+                    title: "Ministry of Budget",
+                    category: "Security",
+                    description: "Complete security system installation for the Ministry of Budget: HD video surveillance, biometric access control and secure doors.",
+                    specs: ["HD Cameras", "Biometrics", "Secure Doors"]
+                },
+                security2: {
+                    title: "Ministry of Agriculture",
+                    category: "Security",
+                    description: "Deployment of an integrated security system for the Ministry of Agriculture: video surveillance, access control and intrusion detection.",
+                    specs: ["Video Surveillance", "Access Control", "Anti-intrusion Alarm"]
+                },
+                security3: {
+                    title: "Ministry of Higher Education",
+                    category: "Security",
+                    description: "Complete security for the Ministry of Higher Education with cameras, biometrics and modern alarm systems.",
+                    specs: ["Cameras", "Biometrics", "Alarm Systems"]
+                },
+                security4: {
+                    title: "Ministry of State Affairs",
+                    category: "Security",
+                    description: "High-performance security installation for the Ministry of State Affairs: 24/7 surveillance and reinforced access control.",
+                    specs: ["24/7 Surveillance", "Reinforced Access", "Secure Doors"]
+                },
+                solar1: {
+                    title: "Residential Solar Installations",
+                    category: "Solar Energy",
+                    description: "Solar panel installations for private homes in Conakry. Custom solutions for energy independence of Guinean households.",
+                    specs: ["Photovoltaic Panels", "Batteries", "Inverters"]
+                }
+            },
+            cta: {
+                title: "Have a project?",
+                subtitle: "Join our satisfied clients and entrust us with your next project. We support you from design to completion.",
+                button: "Request a free quote"
+            }
+        },
+        // 404 Page
+        notFound: {
+            title: "Page not found",
+            subtitle: "The page you are looking for does not exist or has been moved.",
+            button: "Back to home"
+        },
+        // Scroll to top
+        scrollTop: "Back to top"
     },
     zh: {
         // Navigation
@@ -348,6 +556,12 @@ export const translations = {
             stat1: "已交付项目",
             stat2: "满意客户",
             stat3: "年经验",
+            statYears: "5年",
+            items: {
+                security1: { title: "预算部安防系统", category: "安防" },
+                security2: { title: "农业部安防系统", category: "安防" },
+                solar: { title: "住宅太阳能安装", category: "太阳能" },
+            },
         },
         // Trust
         trust: {
@@ -393,6 +607,104 @@ export const translations = {
             contactTitle: "联系方式",
             copyright: "版权所有。",
         },
+        // WhatsApp
+        whatsapp: {
+            message: "您好 HADJA AISHA EMPOWERMENT，我对您的服务感兴趣。",
+            tooltip: "与我们聊天",
+        },
+        // History Page
+        history: {
+            badge: "我们的历史",
+            title: "建设",
+            titleHighlight: "几内亚的未来",
+            intro: "自成立以来，HADJA AISHA EMPOWERMENT 一直致力于几内亚的可持续发展。在",
+            leader: "Mamady Kalifa KEITA",
+            introEnd: "的领导下，我们正在构建一个技术与传统相结合的未来，创造创新解决方案。",
+            mission: {
+                title: "我们的使命",
+                description: "提供太阳能、电子安防和建筑领域的尖端技术解决方案，适应几内亚的实际情况，同时保证每位客户的质量、可靠性和个性化支持。"
+            },
+            vision: {
+                title: "我们的愿景",
+                description: "成为西非地区现代基础设施集成解决方案的首选合作伙伴，积极促进几内亚企业和家庭的能源独立和安全。"
+            },
+            valuesTitle: "我们的价值观",
+            values: {
+                engagement: { title: "承诺", description: "全心全意为客户和几内亚社区服务。" },
+                excellence: { title: "卓越", description: "在每个项目中不断追求质量。" },
+                innovation: { title: "创新", description: "采用最先进的技术提供可持续解决方案。" }
+            },
+            journeyTitle: "我们的历程",
+            milestones: {
+                foundation: { year: "创立", title: "公司成立", description: "HADJA AISHA EMPOWERMENT 在科纳克里诞生，怀着明确的愿景：为几内亚的发展做出贡献。" },
+                expansion: { year: "扩展", title: "服务多元化", description: "将业务扩展到电子安防和可再生能源领域。" },
+                recognition: { year: "认可", title: "战略合作", description: "与主要机构合作：政府、银行和大型企业。" },
+                today: { year: "今天", title: "市场领导者", description: "在几内亚能源、安防和建筑集成解决方案领域的领先地位。" }
+            },
+            expertiseTitle: "我们的专业领域",
+            expertise: {
+                solar: { title: "太阳能", description: "安装光伏系统实现能源独立。" },
+                security: { title: "电子安防", description: "视频监控、门禁和报警系统。" },
+                construction: { title: "建筑工程", description: "住宅和商业项目交付。" }
+            }
+        },
+        // Realizations Page
+        realizations: {
+            badge: "项目案例",
+            title: "我们的项目",
+            subtitle: "探索展示我们在几内亚太阳能、安防和建筑方面专业知识的标志性项目。",
+            filters: {
+                all: "全部",
+                solar: "太阳能",
+                security: "安防",
+                construction: "建筑"
+            },
+            projects: {
+                security1: {
+                    title: "预算部",
+                    category: "安防",
+                    description: "为预算部安装完整的安防系统：高清视频监控、生物识别门禁和安全门。",
+                    specs: ["高清摄像头", "生物识别", "安全门"]
+                },
+                security2: {
+                    title: "农业部",
+                    category: "安防",
+                    description: "为农业部部署集成安防系统：视频监控、门禁控制和入侵检测。",
+                    specs: ["视频监控", "门禁控制", "防入侵报警"]
+                },
+                security3: {
+                    title: "高等教育部",
+                    category: "安防",
+                    description: "为高等教育部提供完整的安防系统：摄像头、生物识别和现代报警系统。",
+                    specs: ["摄像头", "生物识别", "报警系统"]
+                },
+                security4: {
+                    title: "国务部",
+                    category: "安防",
+                    description: "为国务部安装高性能安防系统：24/7监控和强化门禁控制。",
+                    specs: ["24/7监控", "强化门禁", "安全门"]
+                },
+                solar1: {
+                    title: "住宅太阳能安装",
+                    category: "太阳能",
+                    description: "为科纳克里的私人住宅安装太阳能板。为几内亚家庭提供定制的能源独立解决方案。",
+                    specs: ["光伏板", "电池", "逆变器"]
+                }
+            },
+            cta: {
+                title: "有项目需求？",
+                subtitle: "加入我们满意的客户行列，将您的下一个项目交给我们。我们从设计到完成全程陪伴您。",
+                button: "申请免费报价"
+            }
+        },
+        // 404 Page
+        notFound: {
+            title: "页面未找到",
+            subtitle: "您查找的页面不存在或已被移动。",
+            button: "返回首页"
+        },
+        // Scroll to top
+        scrollTop: "返回顶部"
     },
 };
 

@@ -4,29 +4,29 @@ import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const Projects = () => {
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
 
     const projects = [
         {
             id: 1,
-            title: language === 'zh' ? '50kW太阳能安装' : language === 'en' ? '50kW Solar Installation' : 'Installation Solaire 50kW',
-            category: language === 'zh' ? '太阳能' : language === 'en' ? 'Solar Energy' : 'Énergie Solaire',
-            image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
-            color: "#FFD100",
-        },
-        {
-            id: 2,
-            title: language === 'zh' ? '银行安防系统' : language === 'en' ? 'Bank Security System' : 'Sécurisation Bancaire',
-            category: language === 'zh' ? '安防' : language === 'en' ? 'Security' : 'Sécurité',
-            image: "https://images.unsplash.com/photo-1557597774-9d04a601955e?q=80&w=2071&auto=format&fit=crop",
+            title: t.projects.items.security1.title,
+            category: t.projects.items.security1.category,
+            image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2064&auto=format&fit=crop",
             color: "#E31B23",
         },
         {
-            id: 3,
-            title: language === 'zh' ? '住宅别墅' : language === 'en' ? 'Residential Villa' : 'Villa Résidentielle',
-            category: language === 'zh' ? '建筑' : language === 'en' ? 'Construction' : 'Construction',
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+            id: 2,
+            title: t.projects.items.security2.title,
+            category: t.projects.items.security2.category,
+            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
             color: "#009E49",
+        },
+        {
+            id: 3,
+            title: t.projects.items.solar.title,
+            category: t.projects.items.solar.category,
+            image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=2074&auto=format&fit=crop",
+            color: "#FFD100",
         },
     ];
 
@@ -95,6 +95,7 @@ const Projects = () => {
                                         <img
                                             src={project.image}
                                             alt={project.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                         />
 
@@ -102,13 +103,9 @@ const Projects = () => {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
                                         {/* Hover indicator */}
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileHover={{ opacity: 1, scale: 1 }}
-                                            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
-                                        >
+                                        <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                                             <ExternalLink size={18} className="text-white" />
-                                        </motion.div>
+                                        </div>
 
                                         {/* Category badge */}
                                         <div
@@ -147,10 +144,10 @@ const Projects = () => {
                     {[
                         { value: "100+", label: t.projects.stat1 },
                         { value: "98%", label: t.projects.stat2 },
-                        { value: language === 'zh' ? '5年' : language === 'en' ? '5 years' : '5 ans', label: t.projects.stat3 },
+                        { value: t.projects.statYears, label: t.projects.stat3 },
                     ].map((stat, i) => (
                         <div key={i} className="text-center">
-                            <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">
+                            <div className="text-2xl md:text-3xl font-bold text-[#FFD100]">
                                 {stat.value}
                             </div>
                             <div className="text-sm text-white/40 mt-1">{stat.label}</div>
