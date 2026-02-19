@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Trust = () => {
+    const { t } = useLanguage();
+
     const partners = [
         { name: "Gouvernement Guinée", color: "#E31B23" },
         { name: "EDG", color: "#FFD100" },
@@ -39,7 +42,7 @@ const Trust = () => {
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
                     >
                         <Sparkles size={14} className="text-[--color-brand-gold]" />
-                        <span className="text-sm font-medium text-white/70">Ils nous font confiance</span>
+                        <span className="text-sm font-medium text-white/70">{t.trust.badge}</span>
                     </motion.div>
 
                     <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">

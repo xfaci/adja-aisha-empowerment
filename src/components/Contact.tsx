@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, MessageCircle, Send } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Contact = () => {
+    const { t, language } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -18,12 +20,12 @@ const Contact = () => {
         e.preventDefault();
 
         const text = `
-*Message de Contact - HADJA AISHA EMPOWERMENT*
+*${language === 'zh' ? '联系信息' : language === 'en' ? 'Contact Message' : 'Message de Contact'} - HADJA AISHA EMPOWERMENT*
 --------------------------------
-*Nom:* ${formData.name}
-*Email:* ${formData.email || 'Non renseigné'}
+*${t.contact.fullName}:* ${formData.name}
+*${t.contact.email}:* ${formData.email || (language === 'zh' ? '未提供' : language === 'en' ? 'Not provided' : 'Non renseigné')}
 
-*Message:*
+*${t.contact.message}:*
 ${formData.message}
         `.trim();
 
@@ -38,21 +40,21 @@ ${formData.message}
     const contactInfo = [
         {
             icon: MapPin,
-            label: "Adresse",
+            label: t.contact.address,
             value: "Villa Michel Collet, 47 Rue Syli, Conakry",
             href: null,
             color: "#E31B23"
         },
         {
             icon: Mail,
-            label: "Email",
+            label: t.contact.emailLabel,
             value: "kalifakeita470@gmail.com",
             href: "mailto:kalifakeita470@gmail.com",
             color: "#FFD100"
         },
         {
             icon: Phone,
-            label: "Téléphone",
+            label: t.contact.phoneLabel,
             value: "+224 613 35 50 07",
             href: "tel:+224613355007",
             color: "#009E49"
@@ -92,16 +94,16 @@ ${formData.message}
                         transition={{ duration: 0.6 }}
                     >
                         <span className="text-sm font-medium text-[--color-brand-gold] tracking-wider uppercase mb-4 block">
-                            Contact
+                            {t.contact.badge}
                         </span>
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                            Parlons de{' '}
+                            {t.contact.title}{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">
-                                votre projet
+                                {t.contact.titleHighlight}
                             </span>
                         </h2>
                         <p className="text-white/60 text-lg mb-10">
-                            Notre équipe est prête à vous accompagner dans tous vos projets.
+                            {t.contact.subtitle}
                         </p>
 
                         {/* Contact Info with glow */}
@@ -163,7 +165,7 @@ ${formData.message}
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
-                                    title="Localisation HADJA AISHA EMPOWERMENT"
+                                    title="HADJA AISHA EMPOWERMENT Location"
                                 ></iframe>
                             </div>
                         </motion.div>
@@ -186,7 +188,7 @@ ${formData.message}
                                     <MessageCircle size={20} className="text-[--color-brand-gold]" />
                                 </div>
                                 <h3 className="text-xl font-semibold text-white">
-                                    Envoyez-nous un message
+                                    {t.contact.formTitle}
                                 </h3>
                             </div>
 
@@ -196,7 +198,7 @@ ${formData.message}
                                     transition={{ duration: 0.2 }}
                                 >
                                     <label htmlFor="contact-name" className="block text-white/70 text-sm mb-2 font-medium">
-                                        Nom complet *
+                                        {t.contact.fullName} *
                                     </label>
                                     <input
                                         type="text"
@@ -208,7 +210,7 @@ ${formData.message}
                                         onBlur={() => setFocusedField(null)}
                                         required
                                         className={inputClass}
-                                        placeholder="Votre nom"
+                                        placeholder={language === 'zh' ? '您的姓名' : language === 'en' ? 'Your name' : 'Votre nom'}
                                     />
                                 </motion.div>
 
@@ -217,7 +219,7 @@ ${formData.message}
                                     transition={{ duration: 0.2 }}
                                 >
                                     <label htmlFor="contact-email" className="block text-white/70 text-sm mb-2 font-medium">
-                                        Email
+                                        {t.contact.email}
                                     </label>
                                     <input
                                         type="email"
@@ -228,7 +230,7 @@ ${formData.message}
                                         onFocus={() => setFocusedField('email')}
                                         onBlur={() => setFocusedField(null)}
                                         className={inputClass}
-                                        placeholder="votre@email.com"
+                                        placeholder="email@example.com"
                                     />
                                 </motion.div>
 
@@ -237,7 +239,7 @@ ${formData.message}
                                     transition={{ duration: 0.2 }}
                                 >
                                     <label htmlFor="contact-message" className="block text-white/70 text-sm mb-2 font-medium">
-                                        Message *
+                                        {t.contact.message} *
                                     </label>
                                     <textarea
                                         id="contact-message"
@@ -249,7 +251,7 @@ ${formData.message}
                                         required
                                         rows={5}
                                         className={`${inputClass} resize-none`}
-                                        placeholder="Comment pouvons-nous vous aider ?"
+                                        placeholder={t.contact.messagePlaceholder}
                                     ></textarea>
                                 </motion.div>
 
@@ -260,7 +262,7 @@ ${formData.message}
                                     className="group w-full bg-gradient-to-r from-[--color-brand-gold] to-[#e6bc00] hover:from-white hover:to-white text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,209,0,0.3)]"
                                 >
                                     <MessageCircle size={20} />
-                                    Envoyer via WhatsApp
+                                    {t.contact.submit}
                                     <motion.span
                                         animate={{ x: [0, 5, 0] }}
                                         transition={{ duration: 1, repeat: Infinity }}
@@ -271,7 +273,7 @@ ${formData.message}
 
                                 <p className="text-center text-xs text-white/40 flex items-center justify-center gap-2">
                                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                    Réponse rapide garantie sous 24h
+                                    {t.contact.guarantee}
                                 </p>
                             </form>
                         </div>

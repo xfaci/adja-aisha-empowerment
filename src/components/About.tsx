@@ -1,29 +1,32 @@
 import { motion } from 'framer-motion';
 import { Award, Clock, Users, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const values = [
-    {
-        icon: Award,
-        title: "Qualité",
-        description: "Matériel certifié et normes internationales.",
-        color: "#FFD100"
-    },
-    {
-        icon: Clock,
-        title: "Délais",
-        description: "Respect rigoureux des plannings.",
-        color: "#E31B23"
-    },
-    {
-        icon: Users,
-        title: "Équipe",
-        description: "Personnel qualifié et expérimenté.",
-        color: "#009E49"
-    }
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 const About = () => {
+    const { t } = useLanguage();
+
+    const values = [
+        {
+            icon: Award,
+            title: t.about.values.quality.title,
+            description: t.about.values.quality.description,
+            color: "#FFD100"
+        },
+        {
+            icon: Clock,
+            title: t.about.values.deadline.title,
+            description: t.about.values.deadline.description,
+            color: "#E31B23"
+        },
+        {
+            icon: Users,
+            title: t.about.values.team.title,
+            description: t.about.values.team.description,
+            color: "#009E49"
+        }
+    ];
+
     return (
         <section id="about" className="py-24 md:py-32 relative overflow-hidden">
             {/* Background */}
@@ -63,24 +66,22 @@ const About = () => {
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[--color-brand-gold]/10 border border-[--color-brand-gold]/30 mb-6"
                         >
                             <Sparkles size={14} className="text-[--color-brand-gold]" />
-                            <span className="text-sm font-medium text-[--color-brand-gold]">À propos</span>
+                            <span className="text-sm font-medium text-[--color-brand-gold]">{t.about.badge}</span>
                         </motion.div>
 
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                            HADJA AISHA{' '}
+                            {t.about.title}{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/80 to-white/40">
-                                EMPOWERMENT
+                                {t.about.titleHighlight}
                             </span>
                         </h2>
 
                         <p className="text-white/70 text-lg mb-6 leading-relaxed">
-                            Dirigée par <strong className="text-[--color-brand-gold]">Mamady Kalifa KEITA</strong>, Président & Chef Exécutif,
-                            notre entreprise s'est imposée comme un acteur incontournable en Guinée.
+                            {t.about.description1} <strong className="text-[--color-brand-gold]">{t.about.leader}</strong>{t.about.leaderTitle}
                         </p>
 
                         <p className="text-white/50 mb-10 leading-relaxed">
-                            Notre mission : fournir des solutions durables en énergie, sécurité et construction
-                            qui améliorent la qualité de vie et sécurisent les investissements de nos clients.
+                            {t.about.description2}
                         </p>
 
                         {/* Values with glow effects */}
@@ -125,7 +126,7 @@ const About = () => {
                                 to="/histoire"
                                 className="group inline-flex items-center gap-2 text-sm font-semibold text-[--color-brand-gold] hover:text-white transition-colors"
                             >
-                                Découvrir notre histoire
+                                {t.about.cta}
                                 <motion.span
                                     animate={{ x: [0, 5, 0] }}
                                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -150,7 +151,7 @@ const About = () => {
                         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group-hover:border-white/20 transition-colors">
                             <img
                                 src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
-                                alt="Équipe HADJA AISHA EMPOWERMENT"
+                                alt="HADJA AISHA EMPOWERMENT Team"
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                             />
                             {/* Overlay gradient */}

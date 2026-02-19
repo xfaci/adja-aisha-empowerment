@@ -1,38 +1,32 @@
 import { Sun, Shield, Building, ArrowRight, Zap } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
-
-const services = [
-    {
-        icon: Shield,
-        title: "Sécurité Électronique",
-        description: "Vidéosurveillance HD, contrôle d'accès biométrique, systèmes d'alarme et détection incendie.",
-        features: ["CCTV & Supervision", "Biométrie", "Alarmes", "Contrôle d'accès"],
-        color: "#E31B23",
-        gradient: "from-[#E31B23] to-[#B01820]",
-        cta: "Sécuriser mon site"
-    },
-    {
-        icon: Sun,
-        title: "Énergie Solaire",
-        description: "Installation de panneaux photovoltaïques, onduleurs hybrides et batteries lithium pour votre autonomie énergétique.",
-        features: ["Panneaux solaires", "Batteries", "Onduleurs", "Maintenance"],
-        color: "#FFD100",
-        gradient: "from-[#FFD100] to-[#CC9F00]",
-        cta: "Passer au solaire"
-    },
-    {
-        icon: Building,
-        title: "Construction & BTP",
-        description: "Projets résidentiels et commerciaux : gros œuvre, étanchéité, plomberie et électricité bâtiment.",
-        features: ["Gros œuvre", "Finitions", "Plomberie", "Électricité"],
-        color: "#009E49",
-        gradient: "from-[#009E49] to-[#007A38]",
-        cta: "Démarrer un projet"
-    }
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Services = () => {
+    const { t } = useLanguage();
+
+    const services = [
+        {
+            icon: Shield,
+            ...t.services.security,
+            color: "#E31B23",
+            gradient: "from-[#E31B23] to-[#B01820]",
+        },
+        {
+            icon: Sun,
+            ...t.services.solar,
+            color: "#FFD100",
+            gradient: "from-[#FFD100] to-[#CC9F00]",
+        },
+        {
+            icon: Building,
+            ...t.services.construction,
+            color: "#009E49",
+            gradient: "from-[#009E49] to-[#007A38]",
+        }
+    ];
+
     return (
         <section id="services" className="py-28 md:py-36 relative overflow-hidden">
             {/* Background */}
@@ -60,17 +54,17 @@ const Services = () => {
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFD100]/10 border border-[#FFD100]/30 mb-6"
                         >
                             <Zap size={14} className="text-[#FFD100]" />
-                            <span className="text-sm font-medium text-[#FFD100]">Nos expertises</span>
+                            <span className="text-sm font-medium text-[#FFD100]">{t.services.badge}</span>
                         </motion.div>
 
                         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                            Trois domaines{' '}
+                            {t.services.title}{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD100] to-[#009E49]">
-                                d'excellence
+                                {t.services.titleHighlight}
                             </span>
                         </h2>
                         <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto">
-                            Des solutions intégrées et professionnelles pour répondre à tous vos besoins en infrastructure moderne.
+                            {t.services.subtitle}
                         </p>
                     </motion.div>
                 </div>
@@ -121,7 +115,7 @@ const Services = () => {
 
                                 {/* Features */}
                                 <div className="flex flex-wrap gap-2 mb-10">
-                                    {service.features.map((feature, i) => (
+                                    {service.features.map((feature: string, i: number) => (
                                         <motion.span
                                             key={feature}
                                             initial={{ opacity: 0, scale: 0.8 }}
@@ -172,7 +166,7 @@ const Services = () => {
                         offset={-80}
                         className="group inline-flex items-center gap-3 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 text-white font-semibold py-4 px-10 rounded-full hover:from-white/15 hover:to-white/10 hover:border-white/30 transition-all duration-300 cursor-pointer hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
                     >
-                        Obtenir un devis personnalisé
+                        {t.services.bottomCta}
                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </motion.div>

@@ -1,8 +1,11 @@
 import { ArrowRight, Sparkles, Play, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Hero = () => {
+    const { t } = useLanguage();
+
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Animated Background */}
@@ -101,7 +104,7 @@ const Hero = () => {
                             className="w-2.5 h-2.5 bg-[#009E49] rounded-full"
                             style={{ boxShadow: '0 0 10px rgba(0,158,73,0.8)' }}
                         />
-                        <span className="text-sm font-medium text-white/90">N°1 en Guinée</span>
+                        <span className="text-sm font-medium text-white/90">{t.hero.badge}</span>
                         <Sparkles size={14} className="text-[#FFD100]" />
                     </motion.div>
 
@@ -112,11 +115,11 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-8"
                     >
-                        <span className="block">Énergie solaire,</span>
+                        <span className="block">{t.hero.title1}</span>
                         <span className="block mt-2">
                             <span className="relative">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD100] via-[#009E49] to-[#FFD100] bg-[length:200%_auto] animate-gradient">
-                                    sécurité
+                                    {t.hero.title2}
                                 </span>
                                 <motion.span
                                     className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FFD100] to-[#009E49] rounded-full"
@@ -125,7 +128,7 @@ const Hero = () => {
                                     transition={{ duration: 0.8, delay: 0.5 }}
                                 />
                             </span>
-                            {' '}& BTP
+                            {' '}{t.hero.title3}
                         </span>
                     </motion.h1>
 
@@ -136,8 +139,8 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 leading-relaxed"
                     >
-                        Solutions professionnelles pour vos projets d'envergure à Conakry.{' '}
-                        <span className="text-white/90 font-medium">Installation, maintenance et accompagnement</span> sur mesure.
+                        {t.hero.subtitle}{' '}
+                        <span className="text-white/90 font-medium">{t.hero.subtitleHighlight}</span> {t.hero.subtitleEnd}
                     </motion.p>
 
                     {/* CTAs */}
@@ -154,7 +157,7 @@ const Hero = () => {
                             offset={-80}
                             className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#FFD100] to-[#e6bc00] text-[#191F31] font-bold py-4 px-8 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,209,0,0.5)] hover:scale-105"
                         >
-                            <span className="relative z-10">Demander un devis gratuit</span>
+                            <span className="relative z-10">{t.hero.cta1}</span>
                             <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                         </Link>
 
@@ -166,7 +169,7 @@ const Hero = () => {
                             className="group inline-flex items-center justify-center gap-3 bg-white/5 text-white font-medium py-4 px-8 rounded-full border border-white/20 backdrop-blur-sm hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer"
                         >
                             <Play size={18} className="fill-current" />
-                            Découvrir nos services
+                            {t.hero.cta2}
                         </Link>
                     </motion.div>
 
@@ -177,14 +180,10 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.5 }}
                         className="flex flex-wrap justify-center gap-8 md:gap-12 mb-16"
                     >
-                        {[
-                            { icon: CheckCircle, text: "100+ projets réalisés" },
-                            { icon: CheckCircle, text: "5 ans d'expertise" },
-                            { icon: CheckCircle, text: "Garantie satisfaction" },
-                        ].map((item, i) => (
+                        {[t.hero.trust1, t.hero.trust2, t.hero.trust3].map((text, i) => (
                             <div key={i} className="flex items-center gap-2 text-white/60">
-                                <item.icon size={18} className="text-[#009E49]" />
-                                <span className="text-sm font-medium">{item.text}</span>
+                                <CheckCircle size={18} className="text-[#009E49]" />
+                                <span className="text-sm font-medium">{text}</span>
                             </div>
                         ))}
                     </motion.div>
@@ -197,9 +196,9 @@ const Hero = () => {
                         className="grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
                     >
                         {[
-                            { value: '100+', label: 'Projets', color: '#FFD100' },
-                            { value: '50+', label: 'Clients', color: '#009E49' },
-                            { value: '3', label: 'Expertises', color: '#E31B23' },
+                            { value: '100+', label: t.hero.statProjects, color: '#FFD100' },
+                            { value: '50+', label: t.hero.statClients, color: '#009E49' },
+                            { value: '3', label: t.hero.statExpertise, color: '#E31B23' },
                         ].map((stat, index) => (
                             <motion.div
                                 key={index}

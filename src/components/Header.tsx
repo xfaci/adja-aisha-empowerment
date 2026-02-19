@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
+import type { Language } from '../i18n/translations';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
     const location = useLocation();
     const isHome = location.pathname === '/';
+    const { language, setLanguage, t, languageNames, languageFlags } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -21,11 +25,20 @@ const Header = () => {
         setIsMobileMenuOpen(false);
     }, [location]);
 
+    // Close lang menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = () => setIsLangMenuOpen(false);
+        if (isLangMenuOpen) {
+            document.addEventListener('click', handleClickOutside);
+            return () => document.removeEventListener('click', handleClickOutside);
+        }
+    }, [isLangMenuOpen]);
+
     const navLinks = [
-        { name: 'Services', to: 'services', type: 'scroll' },
-        { name: 'Réalisations', to: '/realisations', type: 'router' },
-        { name: 'Histoire', to: '/histoire', type: 'router' },
-        { name: 'Contact', to: 'contact', type: 'scroll' },
+        { name: t.nav.services, to: 'services', type: 'scroll' },
+        { name: t.nav.realizations, to: '/realisations', type: 'router' },
+        { name: t.nav.history, to: '/histoire', type: 'router' },
+        { name: t.nav.contact, to: 'contact', type: 'scroll' },
     ];
 
     const NavLink = ({ link }: { link: typeof navLinks[0] }) => {
@@ -57,6 +70,8 @@ const Header = () => {
         );
     };
 
+    const languages: Language[] = ['fr', 'en', 'zh'];
+
     return (
         <>
             <header
@@ -73,7 +88,7 @@ const Header = () => {
                             <div className="w-10 h-10 md:w-12 md:h-12">
                                 <img
                                     src="/logo.svg"
-                                    alt="Hadja Aisha Empowerment"
+                                    alt="HADJA AISHA EMPOWERMENT"
                                     className="w-full h-full object-contain"
                                 />
                             </div>
@@ -91,8 +106,53 @@ const Header = () => {
                             ))}
                         </nav>
 
-                        {/* CTA Button */}
-                        <div className="hidden md:block">
+                        {/* Right side - Language Selector + CTA */}
+                        <div className="hidden md:flex items-center gap-4">
+                            {/* Language Selector */}
+                            <div className="relative">
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setIsLangMenuOpen(!isLangMenuOpen);
+                                    }}
+                                    className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-sm text-white/70 hover:text-white"
+                                >
+                                    <Globe size={16} />
+                                    <span>{languageFlags[language]}</span>
+                                </button>
+
+                                <AnimatePresence>
+                                    {isLangMenuOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            className="absolute right-0 mt-2 py-2 w-40 bg-[#1E2538] border border-white/10 rounded-xl shadow-2xl overflow-hidden"
+                                        >
+                                            {languages.map((lang) => (
+                                                <button
+                                                    key={lang}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setLanguage(lang);
+                                                        setIsLangMenuOpen(false);
+                                                    }}
+                                                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
+                                                        language === lang
+                                                            ? 'bg-[--color-brand-gold]/10 text-[--color-brand-gold]'
+                                                            : 'text-white/70 hover:bg-white/5 hover:text-white'
+                                                    }`}
+                                                >
+                                                    <span className="text-lg">{languageFlags[lang]}</span>
+                                                    <span>{languageNames[lang]}</span>
+                                                </button>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+
+                            {/* CTA Button */}
                             <ScrollLink
                                 to="quote"
                                 smooth={true}
@@ -100,7 +160,7 @@ const Header = () => {
                                 offset={-80}
                                 className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-white transition-colors duration-300 cursor-pointer"
                             >
-                                Devis gratuit
+                                {t.nav.quote}
                             </ScrollLink>
                         </div>
 
@@ -149,6 +209,28 @@ const Header = () => {
                         className="fixed inset-0 z-40 bg-[#191F31]"
                     >
                         <div className="flex flex-col items-center justify-center min-h-screen px-6 py-20">
+                            {/* Language Selector - Mobile */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="flex gap-3 mb-10"
+                            >
+                                {languages.map((lang) => (
+                                    <button
+                                        key={lang}
+                                        onClick={() => setLanguage(lang)}
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
+                                            language === lang
+                                                ? 'bg-[--color-brand-gold]/10 border-[--color-brand-gold] text-[--color-brand-gold]'
+                                                : 'border-white/10 text-white/60 hover:border-white/20'
+                                        }`}
+                                    >
+                                        <span className="text-lg">{languageFlags[lang]}</span>
+                                        <span className="text-sm">{languageNames[lang]}</span>
+                                    </button>
+                                ))}
+                            </motion.div>
+
                             <nav className="flex flex-col items-center gap-6">
                                 {navLinks.map((link, index) => (
                                     <motion.div
@@ -195,7 +277,7 @@ const Header = () => {
                                     className="inline-flex items-center gap-2 bg-[--color-brand-gold] text-black font-semibold px-8 py-3 rounded-full cursor-pointer"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
-                                    Demander un devis
+                                    {t.nav.requestQuote}
                                 </ScrollLink>
                             </motion.div>
 

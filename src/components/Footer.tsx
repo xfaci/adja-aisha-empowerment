@@ -1,7 +1,9 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Footer = () => {
+    const { t } = useLanguage();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -11,11 +13,11 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="md:col-span-2">
                         <RouterLink to="/" className="flex items-center gap-3 mb-4">
-                            <img src="/logo.svg" alt="Hadja Aisha" className="w-10 h-10" />
-                            <span className="font-bold text-lg text-white">HADJA AISHA</span>
+                            <img src="/logo.svg" alt="HADJA AISHA EMPOWERMENT" className="w-10 h-10" />
+                            <span className="font-bold text-lg text-white">HADJA AISHA EMPOWERMENT</span>
                         </RouterLink>
                         <p className="text-white/40 text-sm max-w-sm mb-6">
-                            Solutions professionnelles en énergie solaire, sécurité électronique et construction en Guinée.
+                            {t.footer.description}
                         </p>
                         <div className="flex gap-1">
                             <div className="w-8 h-1 bg-[--color-brand-red] rounded-full"></div>
@@ -26,7 +28,7 @@ const Footer = () => {
 
                     {/* Navigation */}
                     <div>
-                        <h4 className="font-semibold text-white mb-4">Navigation</h4>
+                        <h4 className="font-semibold text-white mb-4">{t.footer.navigation}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <ScrollLink
@@ -36,7 +38,7 @@ const Footer = () => {
                                     offset={-80}
                                     className="text-white/40 hover:text-white text-sm cursor-pointer transition-colors"
                                 >
-                                    Services
+                                    {t.nav.services}
                                 </ScrollLink>
                             </li>
                             <li>
@@ -44,7 +46,7 @@ const Footer = () => {
                                     to="/realisations"
                                     className="text-white/40 hover:text-white text-sm transition-colors"
                                 >
-                                    Réalisations
+                                    {t.nav.realizations}
                                 </RouterLink>
                             </li>
                             <li>
@@ -52,7 +54,7 @@ const Footer = () => {
                                     to="/histoire"
                                     className="text-white/40 hover:text-white text-sm transition-colors"
                                 >
-                                    Histoire
+                                    {t.nav.history}
                                 </RouterLink>
                             </li>
                             <li>
@@ -63,7 +65,7 @@ const Footer = () => {
                                     offset={-80}
                                     className="text-white/40 hover:text-white text-sm cursor-pointer transition-colors"
                                 >
-                                    Contact
+                                    {t.nav.contact}
                                 </ScrollLink>
                             </li>
                         </ul>
@@ -71,7 +73,7 @@ const Footer = () => {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="font-semibold text-white mb-4">Contact</h4>
+                        <h4 className="font-semibold text-white mb-4">{t.footer.contactTitle}</h4>
                         <ul className="space-y-3 text-sm text-white/40">
                             <li>
                                 <a href="tel:+224613355007" className="hover:text-white transition-colors">
@@ -94,7 +96,7 @@ const Footer = () => {
                 {/* Bottom */}
                 <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-white/30 text-xs">
-                        © {currentYear} HADJA AISHA EMPOWERMENT. Tous droits réservés.
+                        © {currentYear} HADJA AISHA EMPOWERMENT. {t.footer.copyright}
                     </p>
                     <p className="text-white/30 text-xs">
                         Conakry, Guinée

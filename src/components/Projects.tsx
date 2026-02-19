@@ -1,32 +1,35 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink } from 'lucide-react';
-
-const projects = [
-    {
-        id: 1,
-        title: "Installation Solaire 50kW",
-        category: "Énergie Solaire",
-        image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
-        color: "#FFD100",
-    },
-    {
-        id: 2,
-        title: "Sécurisation Bancaire",
-        category: "Sécurité",
-        image: "https://images.unsplash.com/photo-1557597774-9d04a601955e?q=80&w=2071&auto=format&fit=crop",
-        color: "#E31B23",
-    },
-    {
-        id: 3,
-        title: "Villa Résidentielle",
-        category: "Construction",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
-        color: "#009E49",
-    },
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Projects = () => {
+    const { t, language } = useLanguage();
+
+    const projects = [
+        {
+            id: 1,
+            title: language === 'zh' ? '50kW太阳能安装' : language === 'en' ? '50kW Solar Installation' : 'Installation Solaire 50kW',
+            category: language === 'zh' ? '太阳能' : language === 'en' ? 'Solar Energy' : 'Énergie Solaire',
+            image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
+            color: "#FFD100",
+        },
+        {
+            id: 2,
+            title: language === 'zh' ? '银行安防系统' : language === 'en' ? 'Bank Security System' : 'Sécurisation Bancaire',
+            category: language === 'zh' ? '安防' : language === 'en' ? 'Security' : 'Sécurité',
+            image: "https://images.unsplash.com/photo-1557597774-9d04a601955e?q=80&w=2071&auto=format&fit=crop",
+            color: "#E31B23",
+        },
+        {
+            id: 3,
+            title: language === 'zh' ? '住宅别墅' : language === 'en' ? 'Residential Villa' : 'Villa Résidentielle',
+            category: language === 'zh' ? '建筑' : language === 'en' ? 'Construction' : 'Construction',
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+            color: "#009E49",
+        },
+    ];
+
     return (
         <section id="projects" className="py-24 md:py-32 relative overflow-hidden">
             {/* Background */}
@@ -41,12 +44,12 @@ const Projects = () => {
                         viewport={{ once: true }}
                     >
                         <span className="text-sm font-medium text-[--color-brand-gold] tracking-wider uppercase mb-4 block">
-                            Portfolio
+                            {t.projects.badge}
                         </span>
                         <h2 className="text-3xl md:text-5xl font-bold text-white">
-                            Réalisations{' '}
+                            {t.projects.title}{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">
-                                récentes
+                                {t.projects.titleHighlight}
                             </span>
                         </h2>
                     </motion.div>
@@ -60,7 +63,7 @@ const Projects = () => {
                             to="/realisations"
                             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-sm text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
                         >
-                            Voir tous les projets
+                            {t.projects.viewAll}
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>
@@ -142,9 +145,9 @@ const Projects = () => {
                     className="mt-16 flex flex-wrap justify-center gap-8 md:gap-16"
                 >
                     {[
-                        { value: "100+", label: "Projets livrés" },
-                        { value: "98%", label: "Clients satisfaits" },
-                        { value: "5 ans", label: "D'expérience" },
+                        { value: "100+", label: t.projects.stat1 },
+                        { value: "98%", label: t.projects.stat2 },
+                        { value: language === 'zh' ? '5年' : language === 'en' ? '5 years' : '5 ans', label: t.projects.stat3 },
                     ].map((stat, i) => (
                         <div key={i} className="text-center">
                             <div className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">

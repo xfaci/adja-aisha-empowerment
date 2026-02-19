@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { MessageCircle, Sparkles, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const QuoteForm = () => {
+    const { t, language } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -21,15 +23,15 @@ const QuoteForm = () => {
         e.preventDefault();
 
         const text = `
-*Demande de Devis - HADJA AISHA EMPOWERMENT*
+*${language === 'zh' ? '报价请求' : language === 'en' ? 'Quote Request' : 'Demande de Devis'} - HADJA AISHA EMPOWERMENT*
 --------------------------------
-*Nom:* ${formData.name}
-*Téléphone:* ${formData.phone}
-*Email:* ${formData.email || 'Non renseigné'}
-*Type de projet:* ${formData.projectType}
-*Lieu:* ${formData.location}
+*${t.quote.fullName}:* ${formData.name}
+*${t.quote.phone}:* ${formData.phone}
+*${t.quote.email}:* ${formData.email || (language === 'zh' ? '未提供' : language === 'en' ? 'Not provided' : 'Non renseigné')}
+*${t.quote.projectType}:* ${formData.projectType}
+*${t.quote.location}:* ${formData.location}
 
-*Message:*
+*${language === 'zh' ? '留言' : language === 'en' ? 'Message' : 'Message'}:*
 ${formData.message}
         `.trim();
 
@@ -80,17 +82,17 @@ ${formData.message}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[--color-brand-gold]/10 border border-[--color-brand-gold]/30 mb-6"
                         >
                             <Sparkles size={16} className="text-[--color-brand-gold]" />
-                            <span className="text-sm font-medium text-[--color-brand-gold]">Devis gratuit & sans engagement</span>
+                            <span className="text-sm font-medium text-[--color-brand-gold]">{t.quote.badge}</span>
                         </motion.div>
 
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            Démarrez votre{' '}
+                            {t.quote.title}{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">
-                                projet
+                                {t.quote.titleHighlight}
                             </span>
                         </h2>
                         <p className="text-white/60 text-lg max-w-xl mx-auto">
-                            Décrivez votre besoin et recevez une estimation personnalisée via WhatsApp sous 24h.
+                            {t.quote.subtitle}
                         </p>
                     </motion.div>
 
@@ -113,7 +115,7 @@ ${formData.message}
                                         transition={{ duration: 0.2 }}
                                     >
                                         <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="name">
-                                            Nom complet *
+                                            {t.quote.fullName} *
                                         </label>
                                         <input
                                             type="text"
@@ -125,7 +127,7 @@ ${formData.message}
                                             onBlur={() => setFocusedField(null)}
                                             required
                                             className={inputClass}
-                                            placeholder="Votre nom"
+                                            placeholder={language === 'zh' ? '您的姓名' : language === 'en' ? 'Your name' : 'Votre nom'}
                                         />
                                     </motion.div>
                                     <motion.div
@@ -133,7 +135,7 @@ ${formData.message}
                                         transition={{ duration: 0.2 }}
                                     >
                                         <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="phone">
-                                            Téléphone WhatsApp *
+                                            {t.quote.phone} *
                                         </label>
                                         <input
                                             type="tel"
@@ -153,7 +155,7 @@ ${formData.message}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                     <div>
                                         <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="email">
-                                            Email (optionnel)
+                                            {t.quote.email}
                                         </label>
                                         <input
                                             type="email"
@@ -167,7 +169,7 @@ ${formData.message}
                                     </div>
                                     <div>
                                         <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="location">
-                                            Ville / Quartier *
+                                            {t.quote.location} *
                                         </label>
                                         <input
                                             type="text"
@@ -177,14 +179,14 @@ ${formData.message}
                                             onChange={handleChange}
                                             required
                                             className={inputClass}
-                                            placeholder="Ex: Conakry, Kaloum"
+                                            placeholder={language === 'zh' ? '例如: 科纳克里' : language === 'en' ? 'Ex: Conakry, Kaloum' : 'Ex: Conakry, Kaloum'}
                                         />
                                     </div>
                                 </div>
 
                                 <div>
                                     <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="projectType">
-                                        Type de projet *
+                                        {t.quote.projectType} *
                                     </label>
                                     <select
                                         id="projectType"
@@ -193,16 +195,16 @@ ${formData.message}
                                         onChange={handleChange}
                                         className={inputClass}
                                     >
-                                        <option value="Solaire">☀️ Installation de Panneaux Solaires</option>
-                                        <option value="Sécurité">🔒 Système de Sécurité / Vidéosurveillance</option>
-                                        <option value="Construction">🏗️ Construction / BTP</option>
-                                        <option value="Autre">📋 Autre demande</option>
+                                        <option value="Solaire">☀️ {t.quote.projectTypes.solar}</option>
+                                        <option value="Sécurité">🔒 {t.quote.projectTypes.security}</option>
+                                        <option value="Construction">🏗️ {t.quote.projectTypes.construction}</option>
+                                        <option value="Autre">📋 {t.quote.projectTypes.other}</option>
                                     </select>
                                 </div>
 
                                 <div>
                                     <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="message">
-                                        Description du projet *
+                                        {t.quote.description} *
                                     </label>
                                     <textarea
                                         id="message"
@@ -212,7 +214,7 @@ ${formData.message}
                                         rows={4}
                                         required
                                         className={`${inputClass} resize-none`}
-                                        placeholder="Décrivez votre projet en quelques mots..."
+                                        placeholder={t.quote.descriptionPlaceholder}
                                     ></textarea>
                                 </div>
 
@@ -223,7 +225,7 @@ ${formData.message}
                                     className="group w-full bg-gradient-to-r from-[--color-brand-gold] to-[#e6bc00] hover:from-white hover:to-white text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,209,0,0.3)]"
                                 >
                                     <MessageCircle size={20} />
-                                    Envoyer via WhatsApp
+                                    {t.quote.submit}
                                     <motion.span
                                         animate={{ x: [0, 5, 0] }}
                                         transition={{ duration: 1, repeat: Infinity }}
@@ -234,7 +236,7 @@ ${formData.message}
 
                                 <p className="text-center text-xs text-white/40 flex items-center justify-center gap-2">
                                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                    Réponse rapide garantie sous 24h
+                                    {t.quote.guarantee}
                                 </p>
                             </form>
                         </div>
