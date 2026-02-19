@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { MessageCircle, Sparkles, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const QuoteForm = () => {
@@ -11,6 +11,7 @@ const QuoteForm = () => {
         location: '',
         message: ''
     });
+    const [focusedField, setFocusedField] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,14 +39,30 @@ ${formData.message}
         window.open(whatsappUrl, '_blank');
     };
 
-    const inputClass = "w-full bg-white/5 text-white border border-white/10 rounded-xl py-3.5 px-4 focus:outline-none focus:border-[--color-brand-gold] focus:ring-1 focus:ring-[--color-brand-gold]/50 transition-all placeholder:text-white/30";
+    const inputClass = "w-full bg-white/5 text-white border border-white/10 rounded-xl py-4 px-5 focus:outline-none focus:border-[--color-brand-gold] focus:shadow-[0_0_20px_rgba(255,209,0,0.15)] transition-all duration-300 placeholder:text-white/30";
 
     return (
-        <section id="quote" className="py-24 md:py-32 bg-black relative overflow-hidden">
-            {/* Subtle gradient */}
-            <div className="absolute inset-0">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[--color-brand-gold]/5 rounded-full blur-[150px]"></div>
-            </div>
+        <section id="quote" className="py-24 md:py-32 relative overflow-hidden">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#191F31] via-[#1A2035] to-[#191F31]" />
+
+            {/* Glowing orbs */}
+            <motion.div
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{ duration: 6, repeat: Infinity }}
+                className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[--color-brand-gold] rounded-full blur-[200px] opacity-20"
+            />
+            <motion.div
+                animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.15, 0.3, 0.15],
+                }}
+                transition={{ duration: 8, repeat: Infinity, delay: 1 }}
+                className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[--color-brand-green] rounded-full blur-[200px] opacity-15"
+            />
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="max-w-3xl mx-auto">
@@ -56,138 +73,171 @@ ${formData.message}
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="text-sm font-medium text-[--color-brand-gold] tracking-wider uppercase mb-4 block">
-                            Devis gratuit
-                        </span>
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            whileInView={{ scale: 1 }}
+                            viewport={{ once: true }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[--color-brand-gold]/10 border border-[--color-brand-gold]/30 mb-6"
+                        >
+                            <Sparkles size={16} className="text-[--color-brand-gold]" />
+                            <span className="text-sm font-medium text-[--color-brand-gold]">Devis gratuit & sans engagement</span>
+                        </motion.div>
+
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            Démarrez votre projet
+                            Démarrez votre{' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">
+                                projet
+                            </span>
                         </h2>
-                        <p className="text-white/50 text-lg max-w-xl mx-auto">
-                            Décrivez votre besoin et recevez une estimation personnalisée via WhatsApp.
+                        <p className="text-white/60 text-lg max-w-xl mx-auto">
+                            Décrivez votre besoin et recevez une estimation personnalisée via WhatsApp sous 24h.
                         </p>
                     </motion.div>
 
-                    {/* Form */}
+                    {/* Form Card */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="bg-white/[0.02] border border-white/5 rounded-3xl p-6 md:p-10"
+                        className="relative"
                     >
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                <div>
-                                    <label className="block text-white/60 text-sm mb-2" htmlFor="name">
-                                        Nom complet *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        className={inputClass}
-                                        placeholder="Votre nom"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-white/60 text-sm mb-2" htmlFor="phone">
-                                        Téléphone WhatsApp *
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        required
-                                        className={inputClass}
-                                        placeholder="+224 ..."
-                                    />
-                                </div>
-                            </div>
+                        {/* Card glow effect */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[--color-brand-red]/20 via-[--color-brand-gold]/20 to-[--color-brand-green]/20 rounded-[2rem] blur-xl opacity-50" />
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                <div>
-                                    <label className="block text-white/60 text-sm mb-2" htmlFor="email">
-                                        Email (optionnel)
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className={inputClass}
-                                        placeholder="email@exemple.com"
-                                    />
+                        <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 rounded-3xl p-6 md:p-10 backdrop-blur-sm">
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                    <motion.div
+                                        animate={focusedField === 'name' ? { scale: 1.02 } : { scale: 1 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="name">
+                                            Nom complet *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            onFocus={() => setFocusedField('name')}
+                                            onBlur={() => setFocusedField(null)}
+                                            required
+                                            className={inputClass}
+                                            placeholder="Votre nom"
+                                        />
+                                    </motion.div>
+                                    <motion.div
+                                        animate={focusedField === 'phone' ? { scale: 1.02 } : { scale: 1 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="phone">
+                                            Téléphone WhatsApp *
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            onFocus={() => setFocusedField('phone')}
+                                            onBlur={() => setFocusedField(null)}
+                                            required
+                                            className={inputClass}
+                                            placeholder="+224 ..."
+                                        />
+                                    </motion.div>
                                 </div>
-                                <div>
-                                    <label className="block text-white/60 text-sm mb-2" htmlFor="location">
-                                        Ville / Quartier *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="location"
-                                        name="location"
-                                        value={formData.location}
-                                        onChange={handleChange}
-                                        required
-                                        className={inputClass}
-                                        placeholder="Ex: Conakry, Kaloum"
-                                    />
-                                </div>
-                            </div>
 
-                            <div>
-                                <label className="block text-white/60 text-sm mb-2" htmlFor="projectType">
-                                    Type de projet *
-                                </label>
-                                <select
-                                    id="projectType"
-                                    name="projectType"
-                                    value={formData.projectType}
-                                    onChange={handleChange}
-                                    className={inputClass}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                    <div>
+                                        <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="email">
+                                            Email (optionnel)
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className={inputClass}
+                                            placeholder="email@exemple.com"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="location">
+                                            Ville / Quartier *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="location"
+                                            name="location"
+                                            value={formData.location}
+                                            onChange={handleChange}
+                                            required
+                                            className={inputClass}
+                                            placeholder="Ex: Conakry, Kaloum"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="projectType">
+                                        Type de projet *
+                                    </label>
+                                    <select
+                                        id="projectType"
+                                        name="projectType"
+                                        value={formData.projectType}
+                                        onChange={handleChange}
+                                        className={inputClass}
+                                    >
+                                        <option value="Solaire">☀️ Installation de Panneaux Solaires</option>
+                                        <option value="Sécurité">🔒 Système de Sécurité / Vidéosurveillance</option>
+                                        <option value="Construction">🏗️ Construction / BTP</option>
+                                        <option value="Autre">📋 Autre demande</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label className="block text-white/70 text-sm mb-2 font-medium" htmlFor="message">
+                                        Description du projet *
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        rows={4}
+                                        required
+                                        className={`${inputClass} resize-none`}
+                                        placeholder="Décrivez votre projet en quelques mots..."
+                                    ></textarea>
+                                </div>
+
+                                <motion.button
+                                    type="submit"
+                                    whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(255,209,0,0.4)" }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="group w-full bg-gradient-to-r from-[--color-brand-gold] to-[#e6bc00] hover:from-white hover:to-white text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,209,0,0.3)]"
                                 >
-                                    <option value="Solaire">Installation de Panneaux Solaires</option>
-                                    <option value="Sécurité">Système de Sécurité / Vidéosurveillance</option>
-                                    <option value="Construction">Construction / BTP</option>
-                                    <option value="Autre">Autre demande</option>
-                                </select>
-                            </div>
+                                    <MessageCircle size={20} />
+                                    Envoyer via WhatsApp
+                                    <motion.span
+                                        animate={{ x: [0, 5, 0] }}
+                                        transition={{ duration: 1, repeat: Infinity }}
+                                    >
+                                        <Send size={18} />
+                                    </motion.span>
+                                </motion.button>
 
-                            <div>
-                                <label className="block text-white/60 text-sm mb-2" htmlFor="message">
-                                    Description du projet *
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    rows={4}
-                                    required
-                                    className={`${inputClass} resize-none`}
-                                    placeholder="Décrivez votre projet en quelques mots..."
-                                ></textarea>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="group w-full bg-[--color-brand-gold] hover:bg-white text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3"
-                            >
-                                <MessageCircle size={20} />
-                                Envoyer via WhatsApp
-                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                            </button>
-
-                            <p className="text-center text-xs text-white/30">
-                                Vous serez redirigé vers WhatsApp pour finaliser votre demande.
-                            </p>
-                        </form>
+                                <p className="text-center text-xs text-white/40 flex items-center justify-center gap-2">
+                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                    Réponse rapide garantie sous 24h
+                                </p>
+                            </form>
+                        </div>
                     </motion.div>
                 </div>
             </div>

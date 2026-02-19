@@ -1,35 +1,108 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles, Play, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 
 const Hero = () => {
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Subtle Background */}
-            <div className="absolute inset-0 bg-black">
-                {/* Gradient orbs - subtle */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[--color-brand-gold]/5 rounded-full blur-[150px]"></div>
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[--color-brand-green]/5 rounded-full blur-[150px]"></div>
+            {/* Animated Background */}
+            <div className="absolute inset-0 bg-[#191F31]">
+                {/* Large gradient orbs */}
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.4, 0.6, 0.4],
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-[-30%] right-[-15%] w-[900px] h-[900px] bg-gradient-to-br from-[#FFD100]/30 to-[#FFD100]/5 rounded-full blur-[120px]"
+                />
+                <motion.div
+                    animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute bottom-[-30%] left-[-15%] w-[800px] h-[800px] bg-gradient-to-tr from-[#009E49]/25 to-[#009E49]/5 rounded-full blur-[120px]"
+                />
+                <motion.div
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.2, 0.35, 0.2],
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-gradient-to-br from-[#E31B23]/20 to-transparent rounded-full blur-[100px]"
+                />
+
+                {/* Grid pattern */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+                {/* Radial vignette */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#191F31_75%)]" />
+            </div>
+
+            {/* Floating particles */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {[...Array(30)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute rounded-full"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            width: `${2 + Math.random() * 4}px`,
+                            height: `${2 + Math.random() * 4}px`,
+                            backgroundColor: i % 3 === 0 ? 'rgba(255,209,0,0.4)' : i % 3 === 1 ? 'rgba(0,158,73,0.4)' : 'rgba(255,255,255,0.2)',
+                        }}
+                        animate={{
+                            y: [-30, 30, -30],
+                            x: [-10, 10, -10],
+                            opacity: [0.2, 0.8, 0.2],
+                        }}
+                        transition={{
+                            duration: 4 + Math.random() * 4,
+                            repeat: Infinity,
+                            delay: Math.random() * 3,
+                        }}
+                    />
+                ))}
             </div>
 
             {/* Guinea flag accent - left side */}
-            <div className="hidden lg:flex flex-col fixed left-6 top-1/2 -translate-y-1/2 z-20 gap-2">
-                <div className="w-1 h-12 bg-[--color-brand-red] rounded-full"></div>
-                <div className="w-1 h-12 bg-[--color-brand-gold] rounded-full"></div>
-                <div className="w-1 h-12 bg-[--color-brand-green] rounded-full"></div>
+            <div className="hidden lg:flex flex-col fixed left-8 top-1/2 -translate-y-1/2 z-20 gap-2">
+                {[
+                    { color: '#E31B23', shadow: 'rgba(227,27,35,0.6)' },
+                    { color: '#FFD100', shadow: 'rgba(255,209,0,0.6)' },
+                    { color: '#009E49', shadow: 'rgba(0,158,73,0.6)' },
+                ].map((item, i) => (
+                    <motion.div
+                        key={i}
+                        whileHover={{ scale: 1.8, width: 8 }}
+                        className="w-2 h-14 rounded-full cursor-pointer transition-all duration-300"
+                        style={{
+                            backgroundColor: item.color,
+                            boxShadow: `0 0 20px ${item.shadow}`,
+                        }}
+                    />
+                ))}
             </div>
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20">
-                <div className="max-w-4xl mx-auto text-center">
+            <div className="container mx-auto px-4 md:px-6 relative z-10 pt-24">
+                <div className="max-w-5xl mx-auto text-center">
                     {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
+                        className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
                     >
-                        <span className="w-2 h-2 bg-[--color-brand-green] rounded-full animate-pulse"></span>
-                        <span className="text-sm text-white/80">Leader en Guinée</span>
+                        <motion.div
+                            animate={{ scale: [1, 1.3, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-2.5 h-2.5 bg-[#009E49] rounded-full"
+                            style={{ boxShadow: '0 0 10px rgba(0,158,73,0.8)' }}
+                        />
+                        <span className="text-sm font-medium text-white/90">N°1 en Guinée</span>
+                        <Sparkles size={14} className="text-[#FFD100]" />
                     </motion.div>
 
                     {/* Main heading */}
@@ -37,14 +110,23 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6"
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-8"
                     >
-                        Énergie solaire,{' '}
-                        <br className="hidden sm:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[--color-brand-gold] to-[--color-brand-green]">
-                            sécurité
-                        </span>{' '}
-                        & construction
+                        <span className="block">Énergie solaire,</span>
+                        <span className="block mt-2">
+                            <span className="relative">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD100] via-[#009E49] to-[#FFD100] bg-[length:200%_auto] animate-gradient">
+                                    sécurité
+                                </span>
+                                <motion.span
+                                    className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FFD100] to-[#009E49] rounded-full"
+                                    initial={{ scaleX: 0 }}
+                                    animate={{ scaleX: 1 }}
+                                    transition={{ duration: 0.8, delay: 0.5 }}
+                                />
+                            </span>
+                            {' '}& BTP
+                        </span>
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -52,10 +134,10 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
+                        className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 leading-relaxed"
                     >
-                        Solutions professionnelles pour vos projets d'envergure.
-                        Installation, maintenance et accompagnement sur mesure à Conakry.
+                        Solutions professionnelles pour vos projets d'envergure à Conakry.{' '}
+                        <span className="text-white/90 font-medium">Installation, maintenance et accompagnement</span> sur mesure.
                     </motion.p>
 
                     {/* CTAs */}
@@ -63,45 +145,82 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center"
+                        className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
                     >
                         <Link
                             to="quote"
                             smooth={true}
                             duration={600}
                             offset={-80}
-                            className="group inline-flex items-center justify-center gap-2 bg-[--color-brand-gold] text-black font-semibold py-4 px-8 rounded-full hover:bg-white transition-all duration-300 cursor-pointer"
+                            className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#FFD100] to-[#e6bc00] text-[#191F31] font-bold py-4 px-8 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,209,0,0.5)] hover:scale-105"
                         >
-                            Demander un devis
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            <span className="relative z-10">Demander un devis gratuit</span>
+                            <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                         </Link>
+
                         <Link
                             to="services"
                             smooth={true}
                             duration={600}
                             offset={-80}
-                            className="inline-flex items-center justify-center gap-2 bg-white/5 text-white font-medium py-4 px-8 rounded-full border border-white/10 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                            className="group inline-flex items-center justify-center gap-3 bg-white/5 text-white font-medium py-4 px-8 rounded-full border border-white/20 backdrop-blur-sm hover:bg-white/10 hover:border-white/40 transition-all duration-300 cursor-pointer"
                         >
-                            Nos services
+                            <Play size={18} className="fill-current" />
+                            Découvrir nos services
                         </Link>
                     </motion.div>
 
-                    {/* Stats */}
+                    {/* Trust indicators */}
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
-                        className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+                        className="flex flex-wrap justify-center gap-8 md:gap-12 mb-16"
                     >
                         {[
-                            { value: '100+', label: 'Projets réalisés' },
-                            { value: '50+', label: 'Clients satisfaits' },
-                            { value: '3', label: "Domaines d'expertise" },
-                        ].map((stat, index) => (
-                            <div key={index} className="text-center">
-                                <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                                <div className="text-xs md:text-sm text-white/40 mt-1">{stat.label}</div>
+                            { icon: CheckCircle, text: "100+ projets réalisés" },
+                            { icon: CheckCircle, text: "5 ans d'expertise" },
+                            { icon: CheckCircle, text: "Garantie satisfaction" },
+                        ].map((item, i) => (
+                            <div key={i} className="flex items-center gap-2 text-white/60">
+                                <item.icon size={18} className="text-[#009E49]" />
+                                <span className="text-sm font-medium">{item.text}</span>
                             </div>
+                        ))}
+                    </motion.div>
+
+                    {/* Stats cards */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        className="grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
+                    >
+                        {[
+                            { value: '100+', label: 'Projets', color: '#FFD100' },
+                            { value: '50+', label: 'Clients', color: '#009E49' },
+                            { value: '3', label: 'Expertises', color: '#E31B23' },
+                        ].map((stat, index) => (
+                            <motion.div
+                                key={index}
+                                whileHover={{ scale: 1.05, y: -5 }}
+                                className="group relative p-6 md:p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/25 transition-all overflow-hidden"
+                            >
+                                {/* Glow effect */}
+                                <div
+                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                    style={{
+                                        background: `radial-gradient(circle at center, ${stat.color}15 0%, transparent 70%)`,
+                                    }}
+                                />
+                                <div
+                                    className="text-3xl md:text-5xl font-bold mb-2"
+                                    style={{ color: stat.color }}
+                                >
+                                    {stat.value}
+                                </div>
+                                <div className="text-sm text-white/50 font-medium">{stat.label}</div>
+                            </motion.div>
                         ))}
                     </motion.div>
                 </div>
@@ -111,22 +230,26 @@ const Hero = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+                transition={{ delay: 1.5 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
             >
                 <Link
                     to="services"
                     smooth={true}
                     duration={600}
                     offset={-80}
-                    className="cursor-pointer"
+                    className="cursor-pointer group"
                 >
                     <motion.div
-                        animate={{ y: [0, 8, 0] }}
+                        animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2"
+                        className="w-8 h-14 rounded-full border-2 border-white/30 flex justify-center pt-3 group-hover:border-[#FFD100] transition-colors"
                     >
-                        <div className="w-1 h-2 bg-white/40 rounded-full"></div>
+                        <motion.div
+                            animate={{ opacity: [0.4, 1, 0.4], y: [0, 10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="w-1.5 h-4 bg-white/60 rounded-full"
+                        />
                     </motion.div>
                 </Link>
             </motion.div>

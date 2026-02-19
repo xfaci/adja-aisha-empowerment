@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* Dark Theme - Pure Black for Modern Look */
-  --color-dark: #000000;
-  --color-dark-card: #0A0A0A;
-  --color-dark-surface: #111111;
+  /* Dark Theme - Navy Blue */
+  --color-dark: #191F31;
+  --color-dark-card: #1E2538;
+  --color-dark-surface: #242B40;
 
   /* Glass/Light Surface Colors */
   --color-glass-light: rgba(255, 255, 255, 0.03);
@@ -25,6 +25,9 @@
 
   /* Animations */
   --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
 @layer base {
@@ -33,7 +36,7 @@
   }
 
   body {
-    background-color: #000000;
+    background-color: #191F31;
     color: var(--color-text-primary);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -47,16 +50,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #191F31;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #333333;
+    background: #3D4663;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #444444;
+    background: #4D5A7A;
   }
 }
 
@@ -68,4 +71,133 @@
 /* Smooth transitions for all interactive elements */
 a, button {
   transition: all 0.3s ease;
+}
+
+/* Gradient animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s linear infinite;
+  background-size: 200% auto;
+}
+
+/* Glow animation */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(255, 209, 0, 0.2);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(255, 209, 0, 0.4);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Smooth fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Glass morphism utility classes */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-heavy {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Glow effect utility classes */
+.glow-gold {
+  box-shadow: 0 0 30px rgba(255, 209, 0, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 30px rgba(0, 158, 73, 0.3);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px rgba(227, 27, 35, 0.3);
+}
+
+/* Text glow */
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(255, 209, 0, 0.5);
+}
+
+.text-glow-white {
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
