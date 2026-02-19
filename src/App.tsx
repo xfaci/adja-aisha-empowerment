@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import History from './pages/History';
 import Realizations from './pages/Realizations';
 import NotFound from './pages/NotFound';
+import CustomCursor from './components/CustomCursor';
 
 // Scroll to top on route change
 function ScrollToTopOnNavigate() {
@@ -25,6 +26,7 @@ function App() {
     return (
         <LanguageProvider>
             <Router>
+                <CustomCursor />
                 <ScrollToTopOnNavigate />
                 <div className="min-h-screen bg-[--color-dark] text-white font-sans selection:bg-[--color-brand-gold] selection:text-[--color-dark]">
                     <Header />
