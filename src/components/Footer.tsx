@@ -106,7 +106,7 @@ const Footer = () => {
                                     <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
                                         <MapPin size={14} className="text-[#E31B23]" />
                                     </div>
-                                    <span>Villa Michel Collet, 47 Rue Syli, Conakry, Guinée</span>
+                                    <span>Rue D1258, Villa Michel Collet, Donka, Conakry</span>
                                 </div>
                             </li>
                         </ul>

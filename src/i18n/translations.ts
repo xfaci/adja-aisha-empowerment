@@ -106,6 +106,7 @@ export const translations = {
             leader: "Mamady Kalifa KEITA",
             leaderTitle: ", Président & Chef Exécutif, notre entreprise s'est imposée comme un acteur incontournable en Guinée.",
             description2: "Notre mission : fournir des solutions durables en énergie, sécurité et construction qui améliorent la qualité de vie et sécurisent les investissements de nos clients.",
+            quote: "Dans un contexte où la sécurité des personnes, des biens et des informations devient une priorité stratégique, nous mettons notre expertise technique au service du renforcement de la protection des infrastructures.",
             values: {
                 quality: { title: "Qualité", description: "Matériel certifié et normes internationales." },
                 deadline: { title: "Délais", description: "Respect rigoureux des plannings." },
@@ -168,8 +169,8 @@ export const translations = {
             milestones: {
                 foundation: { year: "Fondation", title: "Création de l'entreprise", description: "HADJA AISHA EMPOWERMENT voit le jour à Conakry avec une vision claire : contribuer au développement de la Guinée." },
                 expansion: { year: "Expansion", title: "Diversification des services", description: "Extension de nos activités vers la sécurité électronique et les énergies renouvelables." },
-                recognition: { year: "Reconnaissance", title: "Partenariats stratégiques", description: "Collaboration avec des institutions majeures : gouvernement, banques et grandes entreprises." },
-                today: { year: "Aujourd'hui", title: "Leader du marché", description: "Position de référence en Guinée pour les solutions intégrées en énergie, sécurité et construction." }
+                government: { year: "Partenariats", title: "Collaboration avec l'État", description: "Sollicitation officielle auprès des ministères guinéens pour l'installation de systèmes de vidéosurveillance et de contrôle d'accès sécurisés." },
+                today: { year: "Aujourd'hui", title: "Leader du marché", description: "Partenaire de confiance des ministères du Budget, de l'Agriculture, de l'Enseignement Supérieur et des Affaires d'État." }
             },
             expertiseTitle: "Nos Domaines d'Expertise",
             expertise: {
@@ -341,6 +342,7 @@ export const translations = {
             leader: "Mamady Kalifa KEITA",
             leaderTitle: ", President & CEO, our company has established itself as a key player in Guinea.",
             description2: "Our mission: to provide sustainable solutions in energy, security and construction that improve quality of life and secure our clients' investments.",
+            quote: "In a context where security of people, property and information has become a strategic priority, we put our technical expertise at the service of strengthening infrastructure protection.",
             values: {
                 quality: { title: "Quality", description: "Certified equipment and international standards." },
                 deadline: { title: "Deadlines", description: "Strict adherence to schedules." },
@@ -403,8 +405,8 @@ export const translations = {
             milestones: {
                 foundation: { year: "Foundation", title: "Company Creation", description: "HADJA AISHA EMPOWERMENT was born in Conakry with a clear vision: to contribute to Guinea's development." },
                 expansion: { year: "Expansion", title: "Service Diversification", description: "Extension of our activities to electronic security and renewable energy." },
-                recognition: { year: "Recognition", title: "Strategic Partnerships", description: "Collaboration with major institutions: government, banks and large companies." },
-                today: { year: "Today", title: "Market Leader", description: "Reference position in Guinea for integrated solutions in energy, security and construction." }
+                government: { year: "Partnerships", title: "Government Collaboration", description: "Official request to Guinean ministries for installation of video surveillance and secure access control systems." },
+                today: { year: "Today", title: "Market Leader", description: "Trusted partner of the Ministries of Budget, Agriculture, Higher Education and State Affairs." }
             },
             expertiseTitle: "Our Areas of Expertise",
             expertise: {
@@ -576,6 +578,7 @@ export const translations = {
             leader: "Mamady Kalifa KEITA",
             leaderTitle: "领导，总裁兼首席执行官，我们公司已成为几内亚的关键参与者。",
             description2: "我们的使命：提供能源、安防和建筑领域的可持续解决方案，改善生活质量并保护客户投资。",
+            quote: "在人员、财产和信息安全已成为战略重点的背景下，我们将技术专长用于加强基础设施保护。",
             values: {
                 quality: { title: "质量", description: "认证设备和国际标准。" },
                 deadline: { title: "时效", description: "严格遵守时间表。" },
@@ -638,8 +641,8 @@ export const translations = {
             milestones: {
                 foundation: { year: "创立", title: "公司成立", description: "HADJA AISHA EMPOWERMENT 在科纳克里诞生，怀着明确的愿景：为几内亚的发展做出贡献。" },
                 expansion: { year: "扩展", title: "服务多元化", description: "将业务扩展到电子安防和可再生能源领域。" },
-                recognition: { year: "认可", title: "战略合作", description: "与主要机构合作：政府、银行和大型企业。" },
-                today: { year: "今天", title: "市场领导者", description: "在几内亚能源、安防和建筑集成解决方案领域的领先地位。" }
+                government: { year: "合作", title: "政府合作", description: "正式向几内亚各部委申请安装视频监控和安全门禁系统。" },
+                today: { year: "今天", title: "市场领导者", description: "预算部、农业部、高等教育部和国务部的可信赖合作伙伴。" }
             },
             expertiseTitle: "我们的专业领域",
             expertise: {

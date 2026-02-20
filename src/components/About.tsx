@@ -73,9 +73,17 @@ const About = () => {
                             {t.about.leaderTitle}
                         </p>
 
-                        <p className="text-white/50 text-sm md:text-base mb-6 md:mb-10 leading-relaxed">
+                        <p className="text-white/50 text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
                             {t.about.description2}
                         </p>
+
+                        {/* CEO Quote */}
+                        <div className="relative pl-4 border-l-2 border-[#FFD100]/50 mb-6 md:mb-10">
+                            <p className="text-white/60 text-xs md:text-sm italic leading-relaxed">
+                                "{t.about.quote}"
+                            </p>
+                            <p className="text-[#FFD100] text-xs mt-2 font-semibold">— Mamady Kalifa KEITA</p>
+                        </div>
 
                         {/* Values - Horizontal scroll on mobile */}
                         <div className="flex md:grid md:grid-cols-3 gap-3 mb-6 md:mb-10 overflow-x-auto pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">

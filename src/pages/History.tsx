@@ -29,7 +29,7 @@ const History = () => {
     const milestones = [
         t.history.milestones.foundation,
         t.history.milestones.expansion,
-        t.history.milestones.recognition,
+        t.history.milestones.government,
         t.history.milestones.today
     ];
 
