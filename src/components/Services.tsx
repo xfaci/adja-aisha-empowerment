@@ -2,24 +2,32 @@ import { Sun, Shield, Building, ArrowRight, Zap } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useSiteData } from '../store/dataStore';
 
 const Services = () => {
     const { t } = useLanguage();
+    const { servicesData } = useSiteData();
 
     const services = [
         {
             icon: Shield,
             ...t.services.security,
+            title: servicesData.find((s: any) => s.id === 'security')?.title || t.services.security.title,
+            description: servicesData.find((s: any) => s.id === 'security')?.description || t.services.security.description,
             color: "#E31B23",
         },
         {
             icon: Sun,
             ...t.services.solar,
+            title: servicesData.find((s: any) => s.id === 'solar')?.title || t.services.solar.title,
+            description: servicesData.find((s: any) => s.id === 'solar')?.description || t.services.solar.description,
             color: "#FFD100",
         },
         {
             icon: Building,
             ...t.services.construction,
+            title: servicesData.find((s: any) => s.id === 'construction')?.title || t.services.construction.title,
+            description: servicesData.find((s: any) => s.id === 'construction')?.description || t.services.construction.description,
             color: "#009E49",
         }
     ];

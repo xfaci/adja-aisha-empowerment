@@ -2,9 +2,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Award, Clock, Users, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useSiteData } from '../store/dataStore';
 
 const About = () => {
     const { t } = useLanguage();
+    const { aboutData } = useSiteData();
 
     const values = [
         {
@@ -63,26 +65,26 @@ const About = () => {
                         </div>
 
                         <h2 className="text-2xl md:text-5xl font-black text-white mb-4 md:mb-6">
-                            {t.about.title}{' '}
-                            <span className="text-[#FFD100]">{t.about.titleHighlight}</span>
+                            {aboutData.title}{' '}
+                            <span className="text-[#FFD100]">{aboutData.titleHighlight}</span>
                         </h2>
 
                         <p className="text-white/70 text-sm md:text-lg mb-3 md:mb-4 leading-relaxed">
-                            {t.about.description1}{' '}
-                            <strong className="text-[#FFD100] font-bold">{t.about.leader}</strong>
-                            {t.about.leaderTitle}
+                            {aboutData.description1}{' '}
+                            <strong className="text-[#FFD100] font-bold">{aboutData.leader}</strong>
+                            {aboutData.leaderTitle}
                         </p>
 
                         <p className="text-white/50 text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
-                            {t.about.description2}
+                            {aboutData.description2}
                         </p>
 
                         {/* CEO Quote */}
                         <div className="relative pl-4 border-l-2 border-[#FFD100]/50 mb-6 md:mb-10">
                             <p className="text-white/60 text-xs md:text-sm italic leading-relaxed">
-                                "{t.about.quote}"
+                                "{aboutData.quote}"
                             </p>
-                            <p className="text-[#FFD100] text-xs mt-2 font-semibold">— Mamady Kalifa KEITA</p>
+                            <p className="text-[#FFD100] text-xs mt-2 font-semibold">— {aboutData.leader}</p>
                         </div>
 
                         {/* Values - Horizontal scroll on mobile */}
@@ -153,8 +155,8 @@ const About = () => {
                                         <div className="w-1 h-8 md:h-10 bg-[#009E49] rounded-full" />
                                     </div>
                                     <div>
-                                        <p className="text-white font-bold text-sm md:text-lg">Mamady Kalifa KEITA</p>
-                                        <p className="text-[#FFD100] text-xs md:text-sm font-medium">Président & CEO</p>
+                                        <p className="text-white font-bold text-sm md:text-lg">{aboutData.leader}</p>
+                                        <p className="text-[#FFD100] text-xs md:text-sm font-medium">{aboutData.leaderTitle}</p>
                                     </div>
                                 </div>
                             </div>

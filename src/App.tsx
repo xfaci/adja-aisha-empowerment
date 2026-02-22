@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import Header from './components/Header';
@@ -11,6 +11,16 @@ import Realizations from './pages/Realizations';
 import NotFound from './pages/NotFound';
 import CustomCursor from './components/CustomCursor';
 
+// Admin Imports
+import Login from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminLayout from './components/admin/AdminLayout';
+import HomeContent from './pages/admin/HomeContent';
+import ServicesContent from './pages/admin/ServicesContent';
+import RealizationsContent from './pages/admin/RealizationsContent';
+import AboutContent from './pages/admin/AboutContent';
+
 // Scroll to top on route change
 function ScrollToTopOnNavigate() {
     const { pathname } = useLocation();
@@ -22,26 +32,50 @@ function ScrollToTopOnNavigate() {
     return null;
 }
 
+// Layout for Public Pages
+function PublicLayout() {
+    return (
+        <div className="min-h-screen bg-[--color-dark] text-white font-sans selection:bg-[--color-brand-gold] selection:text-[--color-dark]">
+            <Header />
+            <main>
+                <Outlet />
+            </main>
+            <Footer />
+            <WhatsAppButton />
+            <ScrollToTop />
+        </div>
+    );
+}
+
 function App() {
     return (
         <LanguageProvider>
             <Router>
                 <CustomCursor />
                 <ScrollToTopOnNavigate />
-                <div className="min-h-screen bg-[--color-dark] text-white font-sans selection:bg-[--color-brand-gold] selection:text-[--color-dark]">
-                    <Header />
-                    <main>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/histoire" element={<History />} />
-                            <Route path="/realisations" element={<Realizations />} />
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
-                    </main>
-                    <Footer />
-                    <WhatsAppButton />
-                    <ScrollToTop />
-                </div>
+                <Routes>
+                    {/* Public Routes */}
+                    <Route element={<PublicLayout />}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/histoire" element={<History />} />
+                        <Route path="/realisations" element={<Realizations />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+
+                    {/* Admin Login Route */}
+                    <Route path="/admin/login" element={<Login />} />
+
+                    {/* Protected Admin Routes */}
+                    <Route element={<ProtectedRoute />}>
+                        <Route path="/admin" element={<AdminLayout />}>
+                            <Route index element={<Dashboard />} />
+                            <Route path="home" element={<HomeContent />} />
+                            <Route path="services" element={<ServicesContent />} />
+                            <Route path="realizations" element={<RealizationsContent />} />
+                            <Route path="about" element={<AboutContent />} />
+                        </Route>
+                    </Route>
+                </Routes>
             </Router>
         </LanguageProvider>
     );

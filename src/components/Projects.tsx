@@ -2,33 +2,16 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useSiteData } from '../store/dataStore';
 
 const Projects = () => {
     const { t } = useLanguage();
+    const { realizationsData } = useSiteData();
 
-    const projects = [
-        {
-            id: 1,
-            title: t.projects.items.security1.title,
-            category: t.projects.items.security1.category,
-            image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop",
-            color: "#E31B23",
-        },
-        {
-            id: 2,
-            title: t.projects.items.security2.title,
-            category: t.projects.items.security2.category,
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop",
-            color: "#009E49",
-        },
-        {
-            id: 3,
-            title: t.projects.items.solar.title,
-            category: t.projects.items.solar.category,
-            image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=800&auto=format&fit=crop",
-            color: "#FFD100",
-        },
-    ];
+    const projects = realizationsData.map((project: any) => ({
+        ...project,
+        color: project.id === 1 ? "#E31B23" : project.id === 2 ? "#009E49" : "#FFD100"
+    }));
 
     return (
         <section id="projects" className="py-16 md:py-32 relative overflow-hidden">

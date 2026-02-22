@@ -2,10 +2,12 @@ import { ArrowRight, Sparkles, Play, CheckCircle, Shield, Sun, Building } from '
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useSiteData } from '../store/dataStore';
 import MagneticButton from './MagneticButton';
 
 const Hero = () => {
     const { t } = useLanguage();
+    const { heroData } = useSiteData();
     const { scrollY } = useScroll();
 
     // Parallax transforms
@@ -79,11 +81,7 @@ const Hero = () => {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 md:mb-10"
                     >
-                        <span className="block">{t.hero.title1}</span>
-                        <span className="block mt-1 md:mt-2">
-                            <span className="text-[#FFD100]">{t.hero.title2}</span>
-                            <span className="text-white/90">{' '}{t.hero.title3}</span>
-                        </span>
+                        <span className="block">{heroData.title}</span>
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -93,8 +91,7 @@ const Hero = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-sm md:text-lg text-white/50 max-w-xl md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed px-2"
                     >
-                        {t.hero.subtitle}{' '}
-                        <span className="text-white font-medium">{t.hero.subtitleHighlight}</span> {t.hero.subtitleEnd}
+                        {heroData.subtitle}
                     </motion.p>
 
                     {/* CTAs - Stack on mobile */}
