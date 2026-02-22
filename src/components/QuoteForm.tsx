@@ -23,7 +23,7 @@ const QuoteForm = () => {
         e.preventDefault();
 
         const text = `
-*${language === 'zh' ? '报价请求' : language === 'en' ? 'Quote Request' : 'Demande de Devis'} - HADJA AISHA EMPOWERMENT*
+*${language === 'zh' ? '报价请求' : language === 'en' ? 'Quote Request' : 'Demande de Devis'} - AISHA EMPOWERMENT*
 --------------------------------
 *${t.quote.fullName}:* ${formData.name}
 *${t.quote.phone}:* ${formData.phone}

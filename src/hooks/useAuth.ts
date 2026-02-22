@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AUTH_KEY = 'hadja_admin_auth';
+const AUTH_KEY = 'aisha_admin_auth';
 
 export function useAuth() {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {

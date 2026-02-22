@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISHA EMPOWERMENT - Présentation Officielle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD100;
+            --gold-dark: #D4AF00;
+            --red: #E31B23;
+            --green: #009E49;
+            --dark: #0A0D12;
+            --dark-card: #12161C;
+            --dark-light: #1A1F28;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            line-height: 1.5;
+        }
+
+        /* A4 Landscape Page Setup */
+        .page {
+            width: 297mm;
+            height: 210mm;
+            padding: 12mm 18mm;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* Print Styles - Critical for A4 Landscape PDF */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .page {
+                width: 297mm;
+                height: 210mm;
+                margin: 0;
+                padding: 10mm 15mm;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+                break-after: page;
+                break-inside: avoid;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+
+            /* Force backgrounds to print */
+            .bg-gradient-1, .bg-gradient-2, .bg-gradient-3 {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* Premium gradient backgrounds */
+        .bg-gradient-1 {
+            background:
+                radial-gradient(ellipse at 0% 0%, rgba(255,209,0,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(0,158,73,0.12) 0%, transparent 50%),
+                var(--dark);
+        }
+
+        .bg-gradient-2 {
+            background:
+                radial-gradient(ellipse at 100% 0%, rgba(227,27,35,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 0% 100%, rgba(255,209,0,0.1) 0%, transparent 50%),
+                var(--dark);
+        }
+
+        .bg-gradient-3 {
+            background:
+                radial-gradient(ellipse at 0% 50%, rgba(0,158,73,0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 100% 50%, rgba(255,209,0,0.1) 0%, transparent 40%),
+                var(--dark);
+        }
+
+        /* Guinea flag accent */
+        .flag-accent {
+            position: absolute;
+            left: 8mm;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .flag-bar {
+            width: 5px;
+            height: 40px;
+            border-radius: 3px;
+        }
+
+        /* ==================== PAGE 1: HERO ==================== */
+        .hero-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-logo-wrapper {
+            position: relative;
+            margin-bottom: 6mm;
+        }
+
+        .hero-logo-glow {
+            position: absolute;
+            inset: -30px;
+            background: radial-gradient(circle, rgba(255,209,0,0.5) 0%, rgba(255,209,0,0.2) 40%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(25px);
+        }
+
+        .hero-logo {
+            position: relative;
+            width: 32mm;
+            height: 32mm;
+            border-radius: 7mm;
+            object-fit: contain;
+            border: 4px solid var(--gold);
+            box-shadow:
+                0 0 0 2px rgba(255,209,0,0.4),
+                0 0 0 8px rgba(255,209,0,0.15),
+                0 15px 50px rgba(0,0,0,0.6),
+                inset 0 0 30px rgba(255,209,0,0.1);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            margin-bottom: 5mm;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin-bottom: 0;
+            color: white;
+            line-height: 1;
+        }
+
+        .hero-title-highlight {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5mm;
+            line-height: 1;
+        }
+
+        .hero-tagline {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 10mm;
+            letter-spacing: 4px;
+        }
+
+        .hero-tagline span {
+            color: var(--gold);
+            margin: 0 15px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 18mm;
+            padding: 8mm 25mm;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 5mm;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-stat {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -9mm;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 12mm;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.25), transparent);
+        }
+
+        .hero-stat-value {
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2mm;
+        }
+
+        .hero-stat-label {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .hero-website {
+            margin-top: 8mm;
+            padding: 3mm 6mm;
+            background: rgba(255,209,0,0.15);
+            border: 1px solid rgba(255,209,0,0.3);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        /* ==================== SECTION HEADERS ==================== */
+        .section-header {
+            margin-bottom: 6mm;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(255,209,0,0.15);
+            border: 1px solid rgba(255,209,0,0.3);
+            border-radius: 50px;
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 4mm;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 3mm;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .section-subtitle {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            max-width: 200mm;
+            line-height: 1.6;
+        }
+
+        /* ==================== PAGE 2: SERVICES ==================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 7mm;
+            margin-top: 6mm;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 5mm;
+            padding: 6mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .service-card.security::before { background: linear-gradient(90deg, var(--red), #FF4757); }
+        .service-card.solar::before { background: linear-gradient(90deg, var(--gold), #FFA502); }
+        .service-card.construction::before { background: linear-gradient(90deg, var(--green), #00D68F); }
+
+        .service-icon {
+            width: 14mm;
+            height: 14mm;
+            border-radius: 4mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4mm;
+            font-size: 22px;
+        }
+
+        .service-card.security .service-icon { background: rgba(227,27,35,0.2); }
+        .service-card.solar .service-icon { background: rgba(255,209,0,0.2); }
+        .service-card.construction .service-icon { background: rgba(0,158,73,0.2); }
+
+        .service-title {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 3mm;
+        }
+
+        .service-description {
+            color: rgba(255,255,255,0.65);
+            font-size: 10px;
+            margin-bottom: 4mm;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5mm;
+        }
+
+        .feature-tag {
+            padding: 2mm 3.5mm;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 8px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+        }
+
+        /* ==================== PAGE 3: ABOUT ==================== */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 14mm;
+            align-items: center;
+            height: calc(100% - 24mm);
+        }
+
+        .ceo-card {
+            position: relative;
+            border-radius: 5mm;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            max-height: 135mm;
+        }
+
+        .ceo-flag-accent {
+            position: absolute;
+            top: -3mm;
+            left: -3mm;
+            display: flex;
+            gap: 2px;
+            z-index: 10;
+            transform: rotate(-5deg);
+        }
+
+        .ceo-flag-accent div {
+            width: 5px;
+            height: 12mm;
+            border-radius: 2px;
+        }
+
+        .ceo-image {
+            width: 100%;
+            max-height: 135mm;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ceo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 5mm;
+            background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, transparent 100%);
+        }
+
+        .ceo-info-box {
+            display: flex;
+            align-items: center;
+            gap: 4mm;
+            padding: 4mm;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 4mm;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .ceo-flag-small {
+            display: flex;
+            gap: 2px;
+        }
+
+        .ceo-flag-small div {
+            width: 4px;
+            height: 8mm;
+            border-radius: 2px;
+        }
+
+        .ceo-name {
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 1mm;
+        }
+
+        .ceo-title-text {
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .about-content h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 5mm;
+            letter-spacing: -1px;
+        }
+
+        .about-content h3 span {
+            color: var(--gold);
+        }
+
+        .about-text {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 4mm;
+            line-height: 1.7;
+            font-size: 10px;
+        }
+
+        .about-text strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            border-left: 3px solid var(--gold);
+            padding: 4mm 5mm;
+            margin: 5mm 0;
+            background: linear-gradient(90deg, rgba(255,209,0,0.1) 0%, transparent 100%);
+            border-radius: 0 4mm 4mm 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 700;
+            margin-top: 3mm;
+            font-size: 9px;
+        }
+
+        .values-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4mm;
+            margin-top: 5mm;
+        }
+
+        .value-box {
+            text-align: center;
+            padding: 4mm;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4mm;
+        }
+
+        .value-icon {
+            width: 10mm;
+            height: 10mm;
+            border-radius: 3mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 3mm;
+            font-size: 16px;
+        }
+
+        .value-title {
+            font-weight: 800;
+            font-size: 10px;
+            margin-bottom: 1.5mm;
+        }
+
+        .value-desc {
+            font-size: 8px;
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* ==================== PAGE 4: REALIZATIONS ==================== */
+        .realizations-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5mm;
+            margin-bottom: 6mm;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 4mm;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 50mm;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3mm;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+
+        .gallery-item-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4mm;
+        }
+
+        .project-card {
+            display: flex;
+            gap: 3mm;
+            padding: 4mm;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4mm;
+        }
+
+        .project-icon {
+            width: 10mm;
+            height: 10mm;
+            border-radius: 3mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 1.5mm 3mm;
+            border-radius: 50px;
+            font-size: 7px;
+            font-weight: 700;
+            margin-bottom: 2mm;
+        }
+
+        .project-title {
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 1.5mm;
+        }
+
+        .project-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 8px;
+            line-height: 1.5;
+        }
+
+        /* ==================== PAGE 5: CLIENTS ==================== */
+        .clients-section {
+            margin-top: 5mm;
+        }
+
+        .clients-label {
+            text-align: center;
+            margin-bottom: 5mm;
+        }
+
+        .clients-label span {
+            display: inline-block;
+            padding: 3mm 6mm;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50px;
+            font-size: 9px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5mm;
+        }
+
+        .client-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5mm 4mm;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4mm;
+            text-align: center;
+            min-height: 32mm;
+        }
+
+        .client-icon {
+            font-size: 24px;
+            margin-bottom: 3mm;
+        }
+
+        .client-name {
+            font-size: 9px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.4;
+        }
+
+        .client-type {
+            font-size: 8px;
+            color: var(--gold);
+            margin-top: 2mm;
+            font-weight: 600;
+        }
+
+        /* ==================== PAGE 6: CONTACT ==================== */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12mm;
+            height: calc(100% - 24mm);
+        }
+
+        .contact-info-section h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 5mm;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 4mm;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 4mm;
+            padding: 4mm;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4mm;
+        }
+
+        .contact-icon {
+            width: 10mm;
+            height: 10mm;
+            border-radius: 3mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .contact-label {
+            font-size: 8px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1mm;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-weight: 700;
+            font-size: 10px;
+        }
+
+        .guarantees-box {
+            margin-top: 5mm;
+            padding: 5mm;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4mm;
+        }
+
+        .guarantees-box h4 {
+            margin-bottom: 4mm;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .guarantees-box ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 3mm;
+        }
+
+        .guarantees-box li {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            color: rgba(255,255,255,0.75);
+            font-size: 9px;
+        }
+
+        .guarantees-box .check {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .contact-cta-box {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--dark);
+            padding: 8mm;
+            border-radius: 5mm;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-cta-box h3 {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 3mm;
+        }
+
+        .contact-cta-box p {
+            opacity: 0.85;
+            margin-bottom: 6mm;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 5mm;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2mm;
+            padding: 4mm 6mm;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        .cta-btn.primary {
+            background: var(--dark);
+            color: white;
+        }
+
+        .cta-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .contact-footer-box {
+            margin-top: 5mm;
+            padding-top: 5mm;
+            border-top: 2px solid rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4mm;
+        }
+
+        .contact-footer-box img {
+            width: 12mm;
+            height: 12mm;
+            border-radius: 3mm;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 0 3px rgba(255,209,0,0.2), 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .contact-footer-name {
+            font-weight: 900;
+            font-size: 12px;
+        }
+
+        .contact-footer-location {
+            opacity: 0.7;
+            font-size: 9px;
+        }
+
+        .contact-website {
+            margin-top: 3mm;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .page-footer {
+            position: absolute;
+            bottom: 6mm;
+            left: 18mm;
+            right: 18mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 4mm;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 8px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+        }
+
+        .footer-brand img {
+            width: 6mm;
+            height: 6mm;
+            border-radius: 1.5mm;
+            border: 1px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .page-number {
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        /* Print footer adjustments */
+        @media print {
+            .page-footer {
+                bottom: 5mm;
+                left: 15mm;
+                right: 15mm;
+            }
+        }
+
+        /* Instructions for printing - hidden in print */
+        .print-instructions {
+            max-width: 297mm;
+            margin: 20px auto;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .print-instructions h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .print-instructions p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 10px;
+        }
+
+        .print-instructions code {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--gold);
+        }
+
+        @media print {
+            .print-instructions {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Instructions (hidden in print) -->
+    <div class="print-instructions">
+        <h2>Instructions pour l'export PDF</h2>
+        <p>1. Appuyez sur <code>Ctrl+P</code> (ou <code>Cmd+P</code> sur Mac)</p>
+        <p>2. Sélectionnez <strong>"Enregistrer au format PDF"</strong> comme destination</p>
+        <p>3. Assurez-vous que l'orientation est en <strong>"Paysage"</strong></p>
+        <p>4. Activez <strong>"Graphiques d'arrière-plan"</strong> dans les options</p>
+    </div>
+
+    <!-- ==================== PAGE 1: COVER ==================== -->
+    <div class="page hero-page bg-gradient-1">
+        <div class="flag-accent">
+            <div class="flag-bar" style="background: var(--red);"></div>
+            <div class="flag-bar" style="background: var(--gold);"></div>
+            <div class="flag-bar" style="background: var(--green);"></div>
+        </div>
+
+        <div class="hero-logo-wrapper">
+            <div class="hero-logo-glow"></div>
+            <img src="public/logo.png" alt="Logo AISHA EMPOWERMENT" class="hero-logo">
+        </div>
+
+        <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            <span>N°1 EN GUINÉE</span>
+        </div>
+
+        <h1 class="hero-title">AISHA</h1>
+        <span class="hero-title-highlight">EMPOWERMENT</span>
+
+        <p class="hero-tagline">
+            ÉNERGIE SOLAIRE <span>•</span> SÉCURITÉ <span>•</span> CONSTRUCTION
+        </p>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value" style="color: var(--gold);">100+</div>
+                <div class="hero-stat-label">Projets Réalisés</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value" style="color: var(--green);">50+</div>
+                <div class="hero-stat-label">Clients Satisfaits</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value" style="color: var(--red);">5 ans</div>
+                <div class="hero-stat-label">D'Expertise</div>
+            </div>
+        </div>
+
+        <div class="hero-website">www.aishaempowerement.com</div>
+
+        <div class="page-footer">
+            <div class="footer-brand">
+                <img src="public/logo.png" alt="Logo">
+                <span>AISHA EMPOWERMENT • Conakry, Guinée</span>
+            </div>
+            <span>+224 613 35 50 07</span>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2: SERVICES ==================== -->
+    <div class="page bg-gradient-2">
+        <div class="flag-accent">
+            <div class="flag-bar" style="background: var(--red);"></div>
+            <div class="flag-bar" style="background: var(--gold);"></div>
+            <div class="flag-bar" style="background: var(--green);"></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-badge">⚡ NOS EXPERTISES</div>
+            <h2 class="section-title">Trois domaines <span>d'excellence</span></h2>
+            <p class="section-subtitle">
+                Des solutions intégrées et professionnelles pour répondre à tous vos besoins en infrastructure moderne.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card security">
+                <div class="service-icon">🛡️</div>
+                <h3 class="service-title">Sécurité Électronique</h3>
+                <p class="service-description">
+                    Vidéosurveillance HD, contrôle d'accès biométrique, systèmes d'alarme et détection incendie pour protéger vos biens et vos personnes.
+                </p>
+                <div class="service-features">
+                    <span class="feature-tag">CCTV & Supervision</span>
+                    <span class="feature-tag">Biométrie</span>
+                    <span class="feature-tag">Alarmes</span>
+                    <span class="feature-tag">Contrôle d'accès</span>
+                </div>
+            </div>
+
+            <div class="service-card solar">
+                <div class="service-icon">☀️</div>
+                <h3 class="service-title">Énergie Solaire</h3>
+                <p class="service-description">
+                    Installation de panneaux photovoltaïques, onduleurs hybrides et batteries lithium pour votre autonomie énergétique complète.
+                </p>
+                <div class="service-features">
+                    <span class="feature-tag">Panneaux solaires</span>
+                    <span class="feature-tag">Batteries lithium</span>
+                    <span class="feature-tag">Onduleurs</span>
+                    <span class="feature-tag">Maintenance</span>
+                </div>
+            </div>
+
+            <div class="service-card construction">
+                <div class="service-icon">🏗️</div>
+                <h3 class="service-title">Construction & BTP</h3>
+                <p class="service-description">
+                    Projets résidentiels et commerciaux : gros œuvre, étanchéité, plomberie et électricité bâtiment de qualité supérieure.
+                </p>
+                <div class="service-features">
+                    <span class="feature-tag">Gros œuvre</span>
+                    <span class="feature-tag">Finitions</span>
+                    <span class="feature-tag">Plomberie</span>
+                    <span class="feature-tag">Électricité</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-brand">
+                <img src="public/logo.png" alt="Logo">
+                <span>AISHA EMPOWERMENT</span>
+            </div>
+            <span class="page-number">2 / 6</span>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 3: ABOUT ==================== -->
+    <div class="page bg-gradient-3">
+        <div class="flag-accent">
+            <div class="flag-bar" style="background: var(--red);"></div>
+            <div class="flag-bar" style="background: var(--gold);"></div>
+            <div class="flag-bar" style="background: var(--green);"></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-badge">✨ À PROPOS</div>
+            <h2 class="section-title">AISHA <span>EMPOWERMENT</span></h2>
+        </div>
+
+        <div class="about-layout">
+            <div class="ceo-card">
+                <div class="ceo-flag-accent">
+                    <div style="background: var(--red);"></div>
+                    <div style="background: var(--gold);"></div>
+                    <div style="background: var(--green);"></div>
+                </div>
+                <img src="public/ceo.png" alt="Mamady Kalifa KEITA - CEO" class="ceo-image">
+                <div class="ceo-overlay">
+                    <div class="ceo-info-box">
+                        <div class="ceo-flag-small">
+                            <div style="background: var(--red);"></div>
+                            <div style="background: var(--gold);"></div>
+                            <div style="background: var(--green);"></div>
+                        </div>
+                        <div>
+                            <div class="ceo-name">Mamady Kalifa KEITA</div>
+                            <div class="ceo-title-text">Président & Chef Exécutif</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <h3>L'excellence au service <span>de la Guinée</span></h3>
+
+                <p class="about-text">
+                    Dirigée par <strong>Mamady Kalifa KEITA</strong>, Président & Chef Exécutif, notre entreprise s'est imposée comme un acteur incontournable dans les domaines de l'énergie, de la sécurité et de la construction en Guinée.
+                </p>
+
+                <p class="about-text">
+                    Notre mission : fournir des solutions durables qui améliorent la qualité de vie et sécurisent les investissements de nos clients, tout en contribuant au développement économique du pays.
+                </p>
+
+                <div class="quote-box">
+                    <p class="quote-text">
+                        "Dans un contexte où la sécurité des personnes, des biens et des informations devient une priorité stratégique, nous mettons notre expertise technique au service du renforcement de la protection des infrastructures."
+                    </p>
+                    <p class="quote-author">— Mamady Kalifa KEITA</p>
+                </div>
+
+                <div class="values-row">
+                    <div class="value-box">
+                        <div class="value-icon" style="background: rgba(255,209,0,0.2);">🏆</div>
+                        <div class="value-title">Qualité</div>
+                        <div class="value-desc">Matériel certifié international</div>
+                    </div>
+                    <div class="value-box">
+                        <div class="value-icon" style="background: rgba(227,27,35,0.2);">⏱️</div>
+                        <div class="value-title">Délais</div>
+                        <div class="value-desc">Respect rigoureux des plannings</div>
+                    </div>
+                    <div class="value-box">
+                        <div class="value-icon" style="background: rgba(0,158,73,0.2);">👥</div>
+                        <div class="value-title">Équipe</div>
+                        <div class="value-desc">Personnel qualifié et expérimenté</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-brand">
+                <img src="public/logo.png" alt="Logo">
+                <span>AISHA EMPOWERMENT</span>
+            </div>
+            <span class="page-number">3 / 6</span>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 4: REALIZATIONS ==================== -->
+    <div class="page bg-gradient-1">
+        <div class="flag-accent">
+            <div class="flag-bar" style="background: var(--red);"></div>
+            <div class="flag-bar" style="background: var(--gold);"></div>
+            <div class="flag-bar" style="background: var(--green);"></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-badge">📁 PORTFOLIO</div>
+            <h2 class="section-title">Nos <span>Réalisations</span></h2>
+            <p class="section-subtitle">
+                Partenaire de confiance des institutions gouvernementales et des particuliers guinéens.
+            </p>
+        </div>
+
+        <div class="realizations-gallery">
+            <div class="gallery-item">
+                <img src="public/realizations/IMG_0804.png" alt="Installation de caméras">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Installation de caméras</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="public/realizations/IMG_0731.png" alt="Contrôle d'accès">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Contrôle d'accès biométrique</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="public/realizations/IMG_0728.png" alt="Sécurité entreprise">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Sécurisation complète</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon" style="background: rgba(227,27,35,0.2);">🏛️</div>
+                <div>
+                    <div class="project-category" style="background: rgba(227,27,35,0.2); color: var(--red);">Sécurité</div>
+                    <h4 class="project-title">Ministère du Budget</h4>
+                    <p class="project-desc">Vidéosurveillance HD, contrôle d'accès biométrique et portes sécurisées.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background: rgba(227,27,35,0.2);">🏛️</div>
+                <div>
+                    <div class="project-category" style="background: rgba(227,27,35,0.2); color: var(--red);">Sécurité</div>
+                    <h4 class="project-title">Ministère de l'Agriculture</h4>
+                    <p class="project-desc">Système de sécurité intégré : vidéosurveillance et contrôle d'accès.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background: rgba(227,27,35,0.2);">🏛️</div>
+                <div>
+                    <div class="project-category" style="background: rgba(227,27,35,0.2); color: var(--red);">Sécurité</div>
+                    <h4 class="project-title">Min. Enseignement Sup.</h4>
+                    <p class="project-desc">Sécurisation complète avec caméras et biométrie.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="background: rgba(255,209,0,0.2);">☀️</div>
+                <div>
+                    <div class="project-category" style="background: rgba(255,209,0,0.2); color: var(--gold);">Solaire</div>
+                    <h4 class="project-title">Installations Résidentielles</h4>
+                    <p class="project-desc">Panneaux photovoltaïques et batteries à Conakry.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-brand">
+                <img src="public/logo.png" alt="Logo">
+                <span>AISHA EMPOWERMENT</span>
+            </div>
+            <span class="page-number">4 / 6</span>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 5: CLIENTS ==================== -->
+    <div class="page bg-gradient-2">
+        <div class="flag-accent">
+            <div class="flag-bar" style="background: var(--red);"></div>
+            <div class="flag-bar" style="background: var(--gold);"></div>
+            <div class="flag-bar" style="background: var(--green);"></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-badge">🤝 ILS NOUS FONT CONFIANCE</div>
+            <h2 class="section-title">Nos <span>Partenaires</span></h2>
+            <p class="section-subtitle">
+                Des institutions gouvernementales aux entreprises privées, nous accompagnons les acteurs majeurs de la Guinée.
+            </p>
+        </div>
+
+        <div class="clients-section">
+            <div class="clients-label">
+                <span>INSTITUTIONS GOUVERNEMENTALES</span>
+            </div>
+
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-icon">🏛️</div>
+                    <div class="client-name">Ministère du Budget</div>
+                    <div class="client-type">Sécurité Électronique</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🌾</div>
+                    <div class="client-name">Ministère de l'Agriculture</div>
+                    <div class="client-type">Sécurité Électronique</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🎓</div>
+                    <div class="client-name">Ministère de l'Enseignement Supérieur</div>
+                    <div class="client-type">Sécurité Électronique</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">⚖️</div>
+                    <div class="client-name">Ministère des Affaires d'État</div>
+                    <div class="client-type">Sécurité Électronique</div>
+                </div>
+            </div>
+
+            <div class="clients-label" style="margin-top: 6mm;">
+                <span>SECTEUR PRIVÉ & PARTICULIERS</span>
+            </div>
+
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-icon">🏠</div>
+                    <div class="client-name">Résidences Privées</div>
+                    <div class="client-type">Énergie Solaire</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🏢</div>
+                    <div class="client-name">Entreprises</div>
+                    <div class="client-type">Sécurité & Solaire</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🏪</div>
+                    <div class="client-name">Commerces</div>
+                    <div class="client-type">Sécurité Électronique</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-icon">🏗️</div>
+                    <div class="client-name">Projets Immobiliers</div>
+                    <div class="client-type">Construction & BTP</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-brand">
+                <img src="public/logo.png" alt="Logo">
+                <span>AISHA EMPOWERMENT</span>
+            </div>
+            <span class="page-number">5 / 6</span>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 6: CONTACT ==================== -->
+    <div class="page bg-gradient-3">
+        <div class="flag-accent">
+            <div class="flag-bar" style="background: var(--red);"></div>
+            <div class="flag-bar" style="background: var(--gold);"></div>
+            <div class="flag-bar" style="background: var(--green);"></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-badge">📞 CONTACT</div>
+            <h2 class="section-title">Parlons de <span>votre projet</span></h2>
+            <p class="section-subtitle">
+                Notre équipe est prête à vous accompagner dans tous vos projets d'énergie, sécurité et construction.
+            </p>
+        </div>
+
+        <div class="contact-layout">
+            <div class="contact-info-section">
+                <h3>Nos Coordonnées</h3>
+
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: rgba(227,27,35,0.2);">📍</div>
+                        <div>
+                            <div class="contact-label">Adresse</div>
+                            <div class="contact-value">Rue D1258, Villa Michel Collet, Donka, Conakry</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: rgba(0,158,73,0.2);">📱</div>
+                        <div>
+                            <div class="contact-label">WhatsApp / Téléphone</div>
+                            <div class="contact-value">+224 613 35 50 07</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: rgba(255,209,0,0.2);">✉️</div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">kalifakeita470@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: rgba(255,209,0,0.2);">🌐</div>
+                        <div>
+                            <div class="contact-label">Site Web</div>
+                            <div class="contact-value">www.aishaempowerement.com</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guarantees-box">
+                    <h4>✅ Nos Garanties</h4>
+                    <ul>
+                        <li><span class="check">✓</span> Réponse rapide sous 24h</li>
+                        <li><span class="check">✓</span> Devis gratuit et sans engagement</li>
+                        <li><span class="check">✓</span> Accompagnement personnalisé</li>
+                        <li><span class="check">✓</span> Garantie satisfaction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-cta-box">
+                <h3>Prêt à démarrer ?</h3>
+                <p>
+                    Rejoignez nos clients satisfaits et confiez-nous votre prochain projet. De la conception à la réalisation, nous sommes à vos côtés pour assurer votre succès.
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="tel:+224613355007" class="cta-btn primary">
+                        📞 Appeler maintenant
+                    </a>
+                    <a href="https://wa.me/224613355007" class="cta-btn whatsapp">
+                        💬 WhatsApp
+                    </a>
+                </div>
+
+                <div class="contact-footer-box">
+                    <img src="public/logo.png" alt="Logo">
+                    <div>
+                        <div class="contact-footer-name">AISHA EMPOWERMENT</div>
+                        <div class="contact-footer-location">Conakry, République de Guinée</div>
+                        <div class="contact-website">www.aishaempowerement.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="footer-brand">
+                <img src="public/logo.png" alt="Logo">
+                <span>© 2025 AISHA EMPOWERMENT - Tous droits réservés</span>
+            </div>
+            <span class="page-number">6 / 6</span>
+        </div>
+    </div>
+
+</body>
+</html>

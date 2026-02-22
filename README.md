@@ -1,6 +1,6 @@
-# HADJA AISHA EMPOWERMENT - Site Vitrine
+# AISHA EMPOWERMENT - Site Vitrine
 
-Ce projet est le site vitrine officiel de **HADJA AISHA EMPOWERMENT**, une entreprise guinéenne spécialisée dans l'installation de panneaux solaires, la sécurité électronique et la construction.
+Ce projet est le site vitrine officiel de **AISHA EMPOWERMENT**, une entreprise guinéenne spécialisée dans l'installation de panneaux solaires, la sécurité électronique et la construction.
 
 ## Fonctionnalités
 
@@ -43,5 +43,5 @@ Ce projet est le site vitrine officiel de **HADJA AISHA EMPOWERMENT**, une entre
 
 ## Auteur
 
-Développé pour **HADJA AISHA EMPOWERMENT**.
+Développé pour **AISHA EMPOWERMENT**.
 # adja-aisha-empowerment

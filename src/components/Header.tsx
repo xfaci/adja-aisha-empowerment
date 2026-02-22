@@ -109,14 +109,14 @@ const Header = () => {
                         <RouterLink to="/" className="flex items-center gap-2 md:gap-3 group">
                             <div className="w-9 h-9 md:w-11 md:h-11">
                                 <img
-                                    src="/logo.svg"
-                                    alt="HADJA AISHA EMPOWERMENT"
+                                    src="/logo.png"
+                                    alt="AISHA EMPOWERMENT"
                                     className="w-full h-full object-contain"
                                 />
                             </div>
                             <div className="hidden sm:block">
                                 <span className="font-bold text-sm md:text-base lg:text-lg text-white group-hover:text-[--color-brand-gold] transition-colors duration-300 leading-tight">
-                                    HADJA AISHA<br className="hidden lg:inline" /><span className="hidden lg:inline"> </span>EMPOWERMENT
+                                    AISHA<br className="hidden lg:inline" /><span className="hidden lg:inline"> </span>EMPOWERMENT
                                 </span>
                             </div>
                         </RouterLink>

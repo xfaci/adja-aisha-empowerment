@@ -20,7 +20,7 @@ const Contact = () => {
         e.preventDefault();
 
         const text = `
-*${language === 'zh' ? '联系信息' : language === 'en' ? 'Contact Message' : 'Message de Contact'} - HADJA AISHA EMPOWERMENT*
+*${language === 'zh' ? '联系信息' : language === 'en' ? 'Contact Message' : 'Message de Contact'} - AISHA EMPOWERMENT*
 --------------------------------
 *${t.contact.fullName}:* ${formData.name}
 *${t.contact.email}:* ${formData.email || (language === 'zh' ? '未提供' : language === 'en' ? 'Not provided' : 'Non renseigné')}
@@ -165,7 +165,7 @@ ${formData.message}
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
-                                    title="HADJA AISHA EMPOWERMENT Location"
+                                    title="AISHA EMPOWERMENT Location"
                                 ></iframe>
                             </div>
                         </motion.div>

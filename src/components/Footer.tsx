@@ -40,9 +40,9 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="md:col-span-5">
                         <RouterLink to="/" className="inline-flex items-center gap-3 mb-4">
-                            <img src="/logo.svg" alt="HADJA AISHA EMPOWERMENT" className="w-10 h-10" />
+                            <img src="/logo.png" alt="AISHA EMPOWERMENT" className="w-10 h-10" />
                             <div>
-                                <span className="font-bold text-base md:text-lg text-white block leading-tight">HADJA AISHA</span>
+                                <span className="font-bold text-base md:text-lg text-white block leading-tight">AISHA</span>
                                 <span className="font-semibold text-xs text-[#FFD100]">EMPOWERMENT</span>
                             </div>
                         </RouterLink>
@@ -116,7 +116,7 @@ const Footer = () => {
                 {/* Bottom */}
                 <div className="mt-8 md:mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3">
                     <p className="text-white/30 text-xs md:text-sm text-center md:text-left">
-                        © {currentYear} HADJA AISHA EMPOWERMENT. {t.footer.copyright}
+                        © {currentYear} AISHA EMPOWERMENT. {t.footer.copyright}
                     </p>
                     <div className="flex items-center gap-2 text-white/30 text-xs md:text-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#009E49]" />

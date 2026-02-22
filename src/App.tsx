@@ -20,6 +20,7 @@ import HomeContent from './pages/admin/HomeContent';
 import ServicesContent from './pages/admin/ServicesContent';
 import RealizationsContent from './pages/admin/RealizationsContent';
 import AboutContent from './pages/admin/AboutContent';
+import Guide from './pages/admin/Guide';
 
 // Scroll to top on route change
 function ScrollToTopOnNavigate() {
@@ -73,6 +74,7 @@ function App() {
                             <Route path="services" element={<ServicesContent />} />
                             <Route path="realizations" element={<RealizationsContent />} />
                             <Route path="about" element={<AboutContent />} />
+                            <Route path="guide" element={<Guide />} />
                         </Route>
                     </Route>
                 </Routes>

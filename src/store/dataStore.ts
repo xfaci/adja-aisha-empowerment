@@ -9,13 +9,13 @@ export const defaultSiteData = {
     about: {
         title: "L'Humain au Cœur de Notre",
         titleHighlight: "Expertise",
-        description1: "Fondée sur des valeurs d'intégrité et de travail acharné, HADJA AISHA EMPOWERMENT est le fruit de la vision de",
+        description1: "Fondée sur des valeurs d'intégrité et de travail acharné, AISHA EMPOWERMENT est le fruit de la vision de",
         leader: "Mamady Kalifa KEITA",
         leaderTitle: " , un entrepreneur guinéen dévoué à l'innovation.",
         description2: "Notre mission est de sécuriser, d'éclairer et de construire l'avenir de la Guinée. Nous mettons un point d'honneur à fournir des solutions de haute qualité, accessibles à tous, tout en créant des opportunités d'emploi pour la jeunesse.",
         quote: "Chaque projet que nous réalisons est une pierre ajoutée à l'édifice de notre nation. Notre force réside dans notre capacité à allier technologie moderne et valeurs traditionnelles.",
         phone: "+224 00 00 00 00",
-        email: "contact@hadjaaisha.gn",
+        email: "contact@aishaempowerement.com",
         address: "Republique de Guinée",
     },
     servicesData: [
@@ -38,26 +38,38 @@ export const defaultSiteData = {
     realizationsData: [
         {
             id: 1,
-            title: "Installation de Caméras",
+            title: "Installation de Caméras Dôme",
             category: "Sécurité",
-            image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop"
+            image: "/realizations/IMG_0804.png"
         },
         {
             id: 2,
-            title: "Sécurisation Biométrique",
+            title: "Système de Contrôle d'Accès Biométrique",
             category: "Contrôle d'accès",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
+            image: "/realizations/IMG_0731.png"
         },
         {
             id: 3,
+            title: "Déploiement Sécurité Entreprise",
+            category: "Sécurité",
+            image: "/realizations/IMG_0728.png"
+        },
+        {
+            id: 4,
             title: "Parc Solaire Industriel",
             category: "Énergie Verte",
             image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=800&auto=format&fit=crop"
+        },
+        {
+            id: 5,
+            title: "Sécurisation Résidentielle",
+            category: "Sécurité",
+            image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop"
         }
     ]
 };
 
-const STORE_KEY = 'hadja_site_data';
+const STORE_KEY = 'aisha_site_data_v2';
 
 // Helper to get data from local storage or default
 export function getSiteData() {

@@ -20,21 +20,21 @@ const Realizations = () => {
             id: 1,
             ...t.realizations.projects.security1,
             categoryId: "security",
-            image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2064&auto=format&fit=crop",
+            image: "/realizations/IMG_0804.png",
             location: "Conakry",
         },
         {
             id: 2,
             ...t.realizations.projects.security2,
             categoryId: "security",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+            image: "/realizations/IMG_0731.png",
             location: "Conakry",
         },
         {
             id: 3,
             ...t.realizations.projects.security3,
             categoryId: "security",
-            image: "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?q=80&w=2070&auto=format&fit=crop",
+            image: "/realizations/IMG_0728.png",
             location: "Conakry",
         },
         {
@@ -103,8 +103,8 @@ const Realizations = () => {
                                 key={category.id}
                                 onClick={() => setActiveFilter(category.id)}
                                 className={`px-6 py-3 md:py-3.5 rounded-full text-sm md:text-base font-bold transition-all duration-300 backdrop-blur-sm ${activeFilter === category.id
-                                        ? 'bg-[#FFD100] text-[#0D1117] shadow-[0_0_20px_rgba(255,209,0,0.3)] scale-105'
-                                        : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10 hover:border-white/20'
+                                    ? 'bg-[#FFD100] text-[#0D1117] shadow-[0_0_20px_rgba(255,209,0,0.3)] scale-105'
+                                    : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10 hover:border-white/20'
                                     }`}
                             >
                                 {category.name}

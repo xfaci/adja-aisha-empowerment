@@ -138,7 +138,7 @@ const About = () => {
                         <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/10">
                             <img
                                 src="/ceo.png"
-                                alt="Mamady Kalifa KEITA - CEO HADJA AISHA EMPOWERMENT"
+                                alt="Mamady Kalifa KEITA - CEO AISHA EMPOWERMENT"
                                 className="w-full h-auto object-cover"
                                 loading="lazy"
                             />

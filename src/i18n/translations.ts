@@ -100,7 +100,7 @@ export const translations = {
         // About
         about: {
             badge: "À propos",
-            title: "HADJA AISHA",
+            title: "AISHA",
             titleHighlight: "EMPOWERMENT",
             description1: "Dirigée par",
             leader: "Mamady Kalifa KEITA",
@@ -140,7 +140,7 @@ export const translations = {
         },
         // WhatsApp
         whatsapp: {
-            message: "Bonjour HADJA AISHA EMPOWERMENT, je suis intéressé par vos services.",
+            message: "Bonjour AISHA EMPOWERMENT, je suis intéressé par vos services.",
             tooltip: "Discuter avec nous",
         },
         // History Page
@@ -148,7 +148,7 @@ export const translations = {
             badge: "Notre Histoire",
             title: "Bâtir l'avenir de la",
             titleHighlight: "Guinée",
-            intro: "Depuis sa création, HADJA AISHA EMPOWERMENT s'engage pour le développement durable de la Guinée. Sous la direction de",
+            intro: "Depuis sa création, AISHA EMPOWERMENT s'engage pour le développement durable de la Guinée. Sous la direction de",
             leader: "Mamady Kalifa KEITA",
             introEnd: ", nous construisons un avenir où technologie et tradition se rencontrent pour créer des solutions innovantes.",
             mission: {
@@ -167,7 +167,7 @@ export const translations = {
             },
             journeyTitle: "Notre Parcours",
             milestones: {
-                foundation: { year: "Fondation", title: "Création de l'entreprise", description: "HADJA AISHA EMPOWERMENT voit le jour à Conakry avec une vision claire : contribuer au développement de la Guinée." },
+                foundation: { year: "Fondation", title: "Création de l'entreprise", description: "AISHA EMPOWERMENT voit le jour à Conakry avec une vision claire : contribuer au développement de la Guinée." },
                 expansion: { year: "Expansion", title: "Diversification des services", description: "Extension de nos activités vers la sécurité électronique et les énergies renouvelables." },
                 government: { year: "Partenariats", title: "Collaboration avec l'État", description: "Sollicitation officielle auprès des ministères guinéens pour l'installation de systèmes de vidéosurveillance et de contrôle d'accès sécurisés." },
                 today: { year: "Aujourd'hui", title: "Leader du marché", description: "Partenaire de confiance des ministères du Budget, de l'Agriculture, de l'Enseignement Supérieur et des Affaires d'État." }
@@ -336,7 +336,7 @@ export const translations = {
         // About
         about: {
             badge: "About Us",
-            title: "HADJA AISHA",
+            title: "AISHA",
             titleHighlight: "EMPOWERMENT",
             description1: "Led by",
             leader: "Mamady Kalifa KEITA",
@@ -376,7 +376,7 @@ export const translations = {
         },
         // WhatsApp
         whatsapp: {
-            message: "Hello HADJA AISHA EMPOWERMENT, I am interested in your services.",
+            message: "Hello AISHA EMPOWERMENT, I am interested in your services.",
             tooltip: "Chat with us",
         },
         // History Page
@@ -384,7 +384,7 @@ export const translations = {
             badge: "Our History",
             title: "Building the future of",
             titleHighlight: "Guinea",
-            intro: "Since its creation, HADJA AISHA EMPOWERMENT has been committed to the sustainable development of Guinea. Under the leadership of",
+            intro: "Since its creation, AISHA EMPOWERMENT has been committed to the sustainable development of Guinea. Under the leadership of",
             leader: "Mamady Kalifa KEITA",
             introEnd: ", we are building a future where technology and tradition meet to create innovative solutions.",
             mission: {
@@ -403,7 +403,7 @@ export const translations = {
             },
             journeyTitle: "Our Journey",
             milestones: {
-                foundation: { year: "Foundation", title: "Company Creation", description: "HADJA AISHA EMPOWERMENT was born in Conakry with a clear vision: to contribute to Guinea's development." },
+                foundation: { year: "Foundation", title: "Company Creation", description: "AISHA EMPOWERMENT was born in Conakry with a clear vision: to contribute to Guinea's development." },
                 expansion: { year: "Expansion", title: "Service Diversification", description: "Extension of our activities to electronic security and renewable energy." },
                 government: { year: "Partnerships", title: "Government Collaboration", description: "Official request to Guinean ministries for installation of video surveillance and secure access control systems." },
                 today: { year: "Today", title: "Market Leader", description: "Trusted partner of the Ministries of Budget, Agriculture, Higher Education and State Affairs." }
@@ -572,7 +572,7 @@ export const translations = {
         // About
         about: {
             badge: "关于我们",
-            title: "HADJA AISHA",
+            title: "AISHA",
             titleHighlight: "EMPOWERMENT",
             description1: "由",
             leader: "Mamady Kalifa KEITA",
@@ -612,7 +612,7 @@ export const translations = {
         },
         // WhatsApp
         whatsapp: {
-            message: "您好 HADJA AISHA EMPOWERMENT，我对您的服务感兴趣。",
+            message: "您好 AISHA EMPOWERMENT，我对您的服务感兴趣。",
             tooltip: "与我们聊天",
         },
         // History Page
@@ -620,7 +620,7 @@ export const translations = {
             badge: "我们的历史",
             title: "建设",
             titleHighlight: "几内亚的未来",
-            intro: "自成立以来，HADJA AISHA EMPOWERMENT 一直致力于几内亚的可持续发展。在",
+            intro: "自成立以来，AISHA EMPOWERMENT 一直致力于几内亚的可持续发展。在",
             leader: "Mamady Kalifa KEITA",
             introEnd: "的领导下，我们正在构建一个技术与传统相结合的未来，创造创新解决方案。",
             mission: {
@@ -639,7 +639,7 @@ export const translations = {
             },
             journeyTitle: "我们的历程",
             milestones: {
-                foundation: { year: "创立", title: "公司成立", description: "HADJA AISHA EMPOWERMENT 在科纳克里诞生，怀着明确的愿景：为几内亚的发展做出贡献。" },
+                foundation: { year: "创立", title: "公司成立", description: "AISHA EMPOWERMENT 在科纳克里诞生，怀着明确的愿景：为几内亚的发展做出贡献。" },
                 expansion: { year: "扩展", title: "服务多元化", description: "将业务扩展到电子安防和可再生能源领域。" },
                 government: { year: "合作", title: "政府合作", description: "正式向几内亚各部委申请安装视频监控和安全门禁系统。" },
                 today: { year: "今天", title: "市场领导者", description: "预算部、农业部、高等教育部和国务部的可信赖合作伙伴。" }
